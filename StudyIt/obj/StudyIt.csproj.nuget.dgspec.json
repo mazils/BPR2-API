@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\45819\\Desktop\\BPR2 API\\StudyIt\\StudyIt.csproj": {}
+    "C:\\Users\\krogh\\OneDrive\\Dokumenter\\GitHub\\BPR\\BPR2-Backend\\StudyIt\\StudyIt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\45819\\Desktop\\BPR2 API\\StudyIt\\StudyIt.csproj": {
+    "C:\\Users\\krogh\\OneDrive\\Dokumenter\\GitHub\\BPR\\BPR2-Backend\\StudyIt\\StudyIt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\45819\\Desktop\\BPR2 API\\StudyIt\\StudyIt.csproj",
+        "projectUniqueName": "C:\\Users\\krogh\\OneDrive\\Dokumenter\\GitHub\\BPR\\BPR2-Backend\\StudyIt\\StudyIt.csproj",
         "projectName": "StudyIt",
-        "projectPath": "C:\\Users\\45819\\Desktop\\BPR2 API\\StudyIt\\StudyIt.csproj",
-        "packagesPath": "C:\\Users\\45819\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\45819\\Desktop\\BPR2 API\\StudyIt\\obj\\",
+        "projectPath": "C:\\Users\\krogh\\OneDrive\\Dokumenter\\GitHub\\BPR\\BPR2-Backend\\StudyIt\\StudyIt.csproj",
+        "packagesPath": "C:\\Users\\krogh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krogh\\OneDrive\\Dokumenter\\GitHub\\BPR\\BPR2-Backend\\StudyIt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\45819\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\krogh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,6 +43,14 @@
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.3, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.15.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

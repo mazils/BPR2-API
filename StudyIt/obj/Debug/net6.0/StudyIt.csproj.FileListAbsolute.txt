@@ -29,3 +29,34 @@ C:\Users\45819\Desktop\BPR2 API\StudyIt\obj\Debug\net6.0\refint\StudyIt.dll
 C:\Users\45819\Desktop\BPR2 API\StudyIt\obj\Debug\net6.0\StudyIt.pdb
 C:\Users\45819\Desktop\BPR2 API\StudyIt\obj\Debug\net6.0\StudyIt.genruntimeconfig.cache
 C:\Users\45819\Desktop\BPR2 API\StudyIt\obj\Debug\net6.0\ref\StudyIt.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\appsettings.json
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\StudyIt.exe
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\StudyIt.deps.json
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\StudyIt.runtimeconfig.json
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\StudyIt.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\StudyIt.pdb
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.csproj.AssemblyReference.cache
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.AssemblyInfoInputs.cache
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.AssemblyInfo.cs
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.csproj.CoreCompileInputs.cache
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\scopedcss\bundle\StudyIt.styles.css
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.csproj.CopyComplete
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\refint\StudyIt.dll
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.pdb
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\StudyIt.genruntimeconfig.cache
+C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\obj\Debug\net6.0\ref\StudyIt.dll
