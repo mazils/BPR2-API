@@ -1,4 +1,3 @@
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
@@ -14,6 +13,7 @@ public class LoginController : Controller
    public LoginController(LoginService loginService) =>
        _loginService = loginService;
 
+   // TODO Check if this can be made private such it cannot be accessed from API nor Swagger.
    [HttpGet]
    public async Task<ActionResult<Login>> GetLogin(string username)
    {
@@ -41,12 +41,14 @@ public class LoginController : Controller
    
        return Ok();
    }
-
+   
    [HttpPost]
    [Route("signup")]
    public async Task<IActionResult> PostTest(Login newLogin)
    {
        await _loginService.CreateLogin(newLogin);
+
+       Console.WriteLine(newLogin);
        
        return CreatedAtAction(nameof(GetLogin), new {username = newLogin.username}, newLogin);
    }
