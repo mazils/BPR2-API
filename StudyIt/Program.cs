@@ -4,6 +4,20 @@ using StudyIt.MongoDB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// CORS Test
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy(MyAllowSpecificOrigins,
+        builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 builder.Services.Configure<StudyItDatabaseSettings>(
     builder.Configuration.GetSection("LoginDatabase"));
@@ -29,6 +43,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
