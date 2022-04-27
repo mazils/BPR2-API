@@ -20,9 +20,13 @@ builder.Services.AddCors(option =>
 
 // Add services to the container.
 builder.Services.Configure<StudyItDatabaseSettings>(
-    builder.Configuration.GetSection("LoginDatabase"));
+    builder.Configuration.GetSection("StudyItDatabase"));
 
+// TODO Remove
 builder.Services.AddSingleton<LoginService>();
+
+builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<CompanyService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(

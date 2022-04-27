@@ -9,11 +9,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="779aab6d-d1e4-4bb7-8bda-947990b3908f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Controllers/CompanyController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/Application.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/ApplicationNotification.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/Company.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/FormatApplicationNotification.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/FormatPostNotification.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/Notification.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/Post.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/PostNotification.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Models/User.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/LoginController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/WeatherForecastController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Login.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/StudyItDatabaseSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/DatabaseSettings/StudyItDatabaseSettings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/StudyIt.dll" afterDir="false" />
@@ -51,7 +71,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.StudyIt">
@@ -98,7 +118,9 @@
       <workItem from="1648625121591" duration="135000" />
       <workItem from="1648625313751" duration="17642000" />
       <workItem from="1648719298860" duration="157000" />
-      <workItem from="1648975369896" duration="3951000" />
+      <workItem from="1648975369896" duration="5552000" />
+      <workItem from="1650541240525" duration="7603000" />
+      <workItem from="1650634544786" duration="640000" />
     </task>
     <servers />
   </component>
