@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using StudyIt;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
@@ -37,5 +38,21 @@ public class UserController : Controller
         }
 
         return user;
+    }
+    
+    [HttpGet]
+    [Route("tokenTest")]
+    public async Task<IActionResult> testToken()
+    {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            var firebase = Firebase.GetInstance();
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                return Ok();
+            }
+        }
+        return Unauthorized();
     }
 }

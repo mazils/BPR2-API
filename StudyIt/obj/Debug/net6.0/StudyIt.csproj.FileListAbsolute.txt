@@ -77,3 +77,29 @@ C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net
 C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\krogh\OneDrive\Dokumenter\GitHub\BPR\BPR2-Backend\StudyIt\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\studyit-df727-firebase-adminsdk-1ehmz-0c231ee957.json
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\DnsClient.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\FirebaseAdmin.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Google.Api.Gax.Rest.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\linux\native\libsnappy64.so
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\linux\native\libzstd.so
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\osx\native\libsnappy64.dylib
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\osx\native\libzstd.dylib
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\win\native\libzstd.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\win\native\snappy32.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\win\native\snappy64.dll
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\45819\Desktop\BPR2 API\StudyIt\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
