@@ -26,18 +26,25 @@ public class UserController : Controller
     }
 
     [HttpGet]
+    [Route("getUser")]
     public async Task<ActionResult<User>> GetUser(string email)
     {
-        var user = await _userService.GetUser(email);
-        
-        Console.WriteLine(user);
-
-        if (user == null)
+         if (Request.Headers.TryGetValue("token", out var value))
         {
-            return NotFound();
+            var firebase = Firebase.GetInstance();
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                var user = await _userService.GetUser(email);
+                Console.WriteLine(user);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return user;
+            }
         }
-
-        return user;
+        return Unauthorized();
     }
     
     [HttpGet]

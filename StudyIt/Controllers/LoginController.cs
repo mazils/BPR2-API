@@ -14,6 +14,8 @@ public class LoginController : Controller
        _loginService = loginService;
 
    // TODO Check if this can be made private such it cannot be accessed from API nor Swagger.
+   //we dont need pass
+   
    [HttpGet]
    public async Task<ActionResult<Login>> GetLogin(string username)
    {
@@ -28,8 +30,9 @@ public class LoginController : Controller
 
        return login;
    }
-
+    //this is not needed
    [HttpPost]
+
    public async Task<IActionResult> LoginCheck(string username, string password)
    {
        var login = await _loginService.CheckLogin(username, password);
