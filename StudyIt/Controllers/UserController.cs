@@ -36,7 +36,7 @@ public class UserController : Controller
             if (firebase.varify(token).Result)
             {
                 var user = await _userService.GetUser(email);
-                Console.WriteLine(user);
+                Console.WriteLine(user.name);
                 if (user == null)
                 {
                     return NotFound();

@@ -25,17 +25,28 @@ public class CompanyController : Controller
     }
 
     [HttpGet]
+    [Route("getCompany")]
     public async Task<ActionResult<Company>> GetCompany(string email)
     {
-        var company = await _companyService.GetCompany(email);
-        
-        Console.WriteLine(company);
-
-        if (company == null)
+         if (Request.Headers.TryGetValue("token", out var value))
         {
-            return NotFound();
-        }
+            var firebase = Firebase.GetInstance();
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                var company = await _companyService.GetCompany(email);
+        
+                Console.WriteLine(company.description);
 
-        return company;
+                 if (company == null)
+                 {
+                     return NotFound();
+                 }
+
+                 return company;
+            }
+        }
+            return Unauthorized();
+        
     }
 }
