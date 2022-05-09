@@ -26,4 +26,11 @@ public class CompanyService
     public async Task<Company?> GetCompany(string email) =>
         await _companyCollection.AsQueryable<Company>()
             .Where(e => e.email == email).FirstOrDefaultAsync();
+
+    //updating company
+     public async Task<ReplaceOneResult> updateCompany(Company company) {
+           var result =  await _companyCollection.ReplaceOneAsync(r => r._id == company._id, company);
+           return result;
+     }
+     
 }

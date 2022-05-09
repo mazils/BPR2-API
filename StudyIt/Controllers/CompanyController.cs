@@ -9,9 +9,13 @@ namespace StudyIt.Controllers;
 public class CompanyController : Controller
 {
     private readonly CompanyService _companyService;
+    private  Firebase firebase;
+    
 
-    public CompanyController(CompanyService companyService) =>
+    public CompanyController(CompanyService companyService) {
         _companyService = companyService;
+         firebase = Firebase.GetInstance();
+    }
 
     [HttpPost]
     [Route("register")]
@@ -30,7 +34,6 @@ public class CompanyController : Controller
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
-            var firebase = Firebase.GetInstance();
             string  token = value;
             if (firebase.varify(token).Result)
             {
@@ -44,6 +47,28 @@ public class CompanyController : Controller
                  }
 
                  return company;
+            }
+        }
+            return Unauthorized();
+        
+    }
+    //updating company
+    [HttpPut]
+    [Route("updateCompany")]
+    public async Task<ActionResult<Company>> updateCompany(Company company)
+    {
+         if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                var result = await _companyService.updateCompany(company);
+                Console.WriteLine("as MatchedCount: "+ result.MatchedCount);
+                 if (result.MatchedCount == 0)
+                 {
+                     return NotFound();
+                 }
+                 return Ok();
             }
         }
             return Unauthorized();
