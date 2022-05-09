@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -19,7 +20,7 @@ public class UserService
     }
 
     // Creating a User
-    public async Task CreateUser(User user) =>
+    public async Task Register(User user) =>
         await _userCollection.InsertOneAsync(user);
 
     // Finding a User by email

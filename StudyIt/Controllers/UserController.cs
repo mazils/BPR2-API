@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt;
 using StudyIt.MongoDB.Models;
@@ -24,7 +26,7 @@ public class UserController : Controller
         
         Console.WriteLine(newUser);
 
-        return CreatedAtAction(nameof(getUserByEmail), new { email = newUser.email }, newUser);
+        return CreatedAtAction(nameof(GetUserByEmail), new { email = newUser.email }, newUser);
     }
 
     [HttpGet]

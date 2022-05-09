@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
@@ -25,7 +27,7 @@ public class CompanyController : Controller
         
         Console.WriteLine(newCompany);
 
-        return CreatedAtAction(nameof(GetCompany), new { email = newCompany.email }, newCompany);
+        return CreatedAtAction(nameof(GetCompanyByEmail), new { email = newCompany.email }, newCompany);
     }
 
     [HttpGet]
@@ -38,10 +40,8 @@ public class CompanyController : Controller
             if (firebase.varify(token).Result)
             {
                 var company = await _companyService.GetCompanyByEmail(email);
-        
-                Console.WriteLine(company.description);
 
-                 if (company == null)
+                if (company == null)
                  {
                      return NotFound();
                  }
@@ -63,9 +63,7 @@ public class CompanyController : Controller
             if (firebase.varify(token).Result)
             {
                 var company = await _companyService.GetCompanyById(_id);
-        
-                Console.WriteLine(company.description);
-
+                
                  if (company == null)
                  {
                      return NotFound();
