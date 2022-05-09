@@ -32,7 +32,7 @@ public class UserService
         await _userCollection.AsQueryable<User>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
 //updating user
-     public async Task<ReplaceOneResult> updateUser(User updatedUser) {
+     public async Task<ReplaceOneResult> Update(User updatedUser) {
            var result =  await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
            return result;
      }

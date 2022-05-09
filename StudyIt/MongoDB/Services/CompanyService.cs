@@ -19,7 +19,7 @@ public class CompanyService
     }
 
     // Creating a Company
-    public async Task CreateCompany(Company company) =>
+    public async Task Register(Company company) =>
         await _companyCollection.InsertOneAsync(company);
 
     // Finding a Company by email
@@ -33,7 +33,7 @@ public class CompanyService
             .Where(e => e._id == _id).FirstOrDefaultAsync();
 
     //updating company
-     public async Task<ReplaceOneResult> updateCompany(Company company) {
+     public async Task<ReplaceOneResult> Update(Company company) {
            var result =  await _companyCollection.ReplaceOneAsync(r => r._id == company._id, company);
            return result;
      }

@@ -6,7 +6,7 @@ using StudyIt.MongoDB.Services;
 namespace StudyIt.Controllers;
 
 [ApiController]
-[Route("api/[Controller]")]
+[Route("[Controller]")]
 public class UserController : Controller
 {
     private readonly UserService _userService;
@@ -18,9 +18,9 @@ public class UserController : Controller
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> PostUser(User newUser)
+    public async Task<IActionResult> Register(User newUser)
     {
-        await _userService.CreateUser(newUser);
+        await _userService.Register(newUser);
         
         Console.WriteLine(newUser);
 
@@ -28,8 +28,8 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    [Route("getUserByEmail")]
-    public async Task<ActionResult<User>> getUserByEmail(string email)
+    [Route("getByEmail")]
+    public async Task<ActionResult<User>> GetUserByEmail(string email)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
@@ -48,8 +48,8 @@ public class UserController : Controller
         return Unauthorized();
     }
     [HttpGet]
-    [Route("getUserById")]
-    public async Task<ActionResult<User>> getUserById(string _id)
+    [Route("getById")]
+    public async Task<ActionResult<User>> GetUserById(string _id)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
@@ -68,16 +68,16 @@ public class UserController : Controller
         return Unauthorized();
     }
 
-[HttpPut]
-    [Route("updateUser")]
-    public async Task<ActionResult<User>> updateUser(User updatedUser)
+    [HttpPut]
+    [Route("update")]
+    public async Task<ActionResult<User>> Update(User updatedUser)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
             string  token = value;
             if (firebase.varify(token).Result)
             {
-                var result = await _userService.updateUser(updatedUser);
+                var result = await _userService.Update(updatedUser);
                 Console.WriteLine("as MatchedCount: "+ result.MatchedCount);
                  if (result.MatchedCount == 0)
                  {

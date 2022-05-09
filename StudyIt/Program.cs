@@ -29,8 +29,6 @@ builder.Services.Configure<StudyItDatabaseSettings>(
 
 //firebase.initializeFirebase();
 
-// TODO Remove
-builder.Services.AddSingleton<LoginService>();
 
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<CompanyService>();

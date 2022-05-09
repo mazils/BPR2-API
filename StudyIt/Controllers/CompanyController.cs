@@ -5,7 +5,7 @@ using StudyIt.MongoDB.Services;
 namespace StudyIt.Controllers;
 
 [ApiController]
-[Route("api/[Controller]")]
+[Route("[Controller]")]
 public class CompanyController : Controller
 {
     private readonly CompanyService _companyService;
@@ -19,9 +19,9 @@ public class CompanyController : Controller
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> PostCompany(Company newCompany)
+    public async Task<IActionResult> Register(Company newCompany)
     {
-        await _companyService.CreateCompany(newCompany);
+        await _companyService.Register(newCompany);
         
         Console.WriteLine(newCompany);
 
@@ -29,8 +29,8 @@ public class CompanyController : Controller
     }
 
     [HttpGet]
-    [Route("getCompanyByEmail")]
-    public async Task<ActionResult<Company>> GetCompany(string email)
+    [Route("getByEmail")]
+    public async Task<ActionResult<Company>> GetCompanyByEmail(string email)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
@@ -54,7 +54,7 @@ public class CompanyController : Controller
     }
 
      [HttpGet]
-    [Route("getCompanyById")]
+    [Route("getById")]
     public async Task<ActionResult<Company>> GetCompanyById(string _id)
     {
          if (Request.Headers.TryGetValue("token", out var value))
@@ -79,15 +79,15 @@ public class CompanyController : Controller
     }
     //updating company
     [HttpPut]
-    [Route("updateCompany")]
-    public async Task<ActionResult<Company>> updateCompany(Company company)
+    [Route("update")]
+    public async Task<ActionResult<Company>> Update(Company company)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
             string  token = value;
             if (firebase.varify(token).Result)
             {
-                var result = await _companyService.updateCompany(company);
+                var result = await _companyService.Update(company);
                 Console.WriteLine("as MatchedCount: "+ result.MatchedCount);
                  if (result.MatchedCount == 0)
                  {
