@@ -22,10 +22,15 @@ public class CompanyService
     public async Task CreateCompany(Company company) =>
         await _companyCollection.InsertOneAsync(company);
 
-    // Finding a Company
-    public async Task<Company?> GetCompany(string email) =>
+    // Finding a Company by email
+    public async Task<Company?> GetCompanyByEmail(string email) =>
         await _companyCollection.AsQueryable<Company>()
             .Where(e => e.email == email).FirstOrDefaultAsync();
+
+    // Finding a Company by id
+    public async Task<Company?> GetCompanyById(string _id) =>
+        await _companyCollection.AsQueryable<Company>()
+            .Where(e => e._id == _id).FirstOrDefaultAsync();
 
     //updating company
      public async Task<ReplaceOneResult> updateCompany(Company company) {

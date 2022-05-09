@@ -29,7 +29,7 @@ public class CompanyController : Controller
     }
 
     [HttpGet]
-    [Route("getCompany")]
+    [Route("getCompanyByEmail")]
     public async Task<ActionResult<Company>> GetCompany(string email)
     {
          if (Request.Headers.TryGetValue("token", out var value))
@@ -37,7 +37,32 @@ public class CompanyController : Controller
             string  token = value;
             if (firebase.varify(token).Result)
             {
-                var company = await _companyService.GetCompany(email);
+                var company = await _companyService.GetCompanyByEmail(email);
+        
+                Console.WriteLine(company.description);
+
+                 if (company == null)
+                 {
+                     return NotFound();
+                 }
+
+                 return company;
+            }
+        }
+            return Unauthorized();
+        
+    }
+
+     [HttpGet]
+    [Route("getCompanyById")]
+    public async Task<ActionResult<Company>> GetCompanyById(string _id)
+    {
+         if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                var company = await _companyService.GetCompanyById(_id);
         
                 Console.WriteLine(company.description);
 
