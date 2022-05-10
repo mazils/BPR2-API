@@ -5,6 +5,7 @@ using StudyIt.MongoDB.Services;
 
 namespace StudyIt.Controllers;
 
+
 [ApiController]
 [Route("api/[Controller]")]
 public class UserController : Controller
@@ -24,12 +25,12 @@ public class UserController : Controller
         
         Console.WriteLine(newUser);
 
-        return CreatedAtAction(nameof(getUserByEmail), new { email = newUser.email }, newUser);
+        return CreatedAtAction(nameof(GetUserByEmail), new { email = newUser.email }, newUser);
     }
 
     [HttpGet]
     [Route("getUserByEmail")]
-    public async Task<ActionResult<User>> getUserByEmail(string email)
+    public async Task<ActionResult<User>> GetUserByEmail(string email)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
@@ -49,7 +50,7 @@ public class UserController : Controller
     }
     [HttpGet]
     [Route("getUserById")]
-    public async Task<ActionResult<User>> getUserById(string _id)
+    public async Task<ActionResult<User>> GetUserById(string _id)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
@@ -70,7 +71,7 @@ public class UserController : Controller
 
 [HttpPut]
     [Route("updateUser")]
-    public async Task<ActionResult<User>> updateUser(User updatedUser)
+    public async Task<ActionResult<User>> UpdateUser(User updatedUser)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
@@ -88,6 +89,35 @@ public class UserController : Controller
         }
             return Unauthorized();
         
+    }
+    [HttpPut]
+    [Route("updatePicture")]
+    public async Task<IActionResult> UpdatePicture(string _id)
+    {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                var formCollection = await Request.ReadFormAsync();
+                if(formCollection.Files.Count == 0)
+                {
+                     return NoContent();
+                }
+                var file = formCollection.Files.FirstOrDefault();
+                 if (file.Length > 0)
+                 {
+                    using (var ms = new MemoryStream())
+                    {
+                      file.CopyTo(ms);
+                      byte[] fileBytes = ms.ToArray();
+                      await _userService.UpdatePicture(_id,fileBytes);
+                    }
+                }
+                return Ok($"Received file {Path.GetFileName(file.FileName)} ");
+            }
+        }
+        return Unauthorized();
     }
 
     //just a template

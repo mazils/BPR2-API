@@ -13,6 +13,7 @@ public class User
     public string name { get; set; } = null!;
     public string education { get; set; } = null!;
     public string? phoneNumber { get; set; }
+    public byte[]? profilePicture { get; set; }
     public List<string>? competences { get; set; }
     public List<string>? interests { get; set; }
 }

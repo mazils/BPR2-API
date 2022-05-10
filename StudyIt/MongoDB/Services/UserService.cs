@@ -32,8 +32,12 @@ public class UserService
         await _userCollection.AsQueryable<User>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
 //updating user
-     public async Task<ReplaceOneResult> updateUser(User updatedUser) {
-           var result =  await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
-           return result;
-     }
+     public async Task<ReplaceOneResult> updateUser(User updatedUser) =>
+            await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
+            
+    //updating picture
+
+    public async Task UpdatePicture(string _id,byte[] fileBytes) =>
+       
+        await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
 }

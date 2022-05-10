@@ -55,3 +55,14 @@ $RECYCLE.BIN/
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 StudyIt/bin/Debug/net6.0/MongoDB.Bson.dll
+StudyIt/obj/StudyIt.csproj.nuget.g.props
+StudyIt/obj/staticwebassets.pack.sentinel
+StudyIt/obj/Debug/net6.0/StudyIt.pdb
+StudyIt/obj/Debug/net6.0/StudyIt.GeneratedMSBuildEditorConfig.editorconfig
+StudyIt/obj/Debug/net6.0/StudyIt.dll
+StudyIt/obj/Debug/net6.0/StudyIt.assets.cache
+StudyIt/obj/Debug/net6.0/StudyIt.AssemblyInfo.cs
+StudyIt/obj/Debug/net6.0/refint/StudyIt.dll
+StudyIt/obj/Debug/net6.0/ref/StudyIt.dll
+StudyIt/bin/Debug/net6.0/StudyIt.pdb
+StudyIt/bin/Debug/net6.0/StudyIt.dll
