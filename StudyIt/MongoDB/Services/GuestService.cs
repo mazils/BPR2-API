@@ -19,7 +19,7 @@ public class GuestService
     }
 
     // Finding a Searched term in posts
-    public async Task<Post?> GetSearchedPost(string searchTerm) =>
-        await _posts.AsQueryable<Post>()
-            .Where(e => e.title == searchTerm).FirstOrDefaultAsync();
+    public async Task<List<Post>> GetSearchedPost(string searchTerm) =>
+        await _posts.AsQueryable<Post?>()
+            .Where(e => e.title.Contains(searchTerm) || e.description.Contains(searchTerm)).ToListAsync();
 }

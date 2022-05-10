@@ -14,14 +14,14 @@ public class GuestController : Controller
 
     [HttpGet]
     [Route("search")]
-    public async Task<ActionResult<Post>> GuestSearch(string searchTerm)
+    public async Task<ActionResult<List<Post>>> GuestSearch(string searchTerm)
     {
         var search = await _guestService.GetSearchedPost(searchTerm);
 
         if(search == null) {
             return NotFound();
         }
-        
+        Console.WriteLine(search);
         return search;
     }
 }

@@ -1,7 +1,4 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StudyIt;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
