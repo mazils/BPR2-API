@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt;
 using StudyIt.MongoDB.Models;
@@ -7,7 +9,7 @@ namespace StudyIt.Controllers;
 
 
 [ApiController]
-[Route("api/[Controller]")]
+[Route("[Controller]")]
 public class UserController : Controller
 {
     private readonly UserService _userService;
@@ -19,9 +21,9 @@ public class UserController : Controller
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> PostUser(User newUser)
+    public async Task<IActionResult> Register(User newUser)
     {
-        await _userService.CreateUser(newUser);
+        await _userService.Register(newUser);
         
         Console.WriteLine(newUser);
 
@@ -29,7 +31,7 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    [Route("getUserByEmail")]
+    [Route("getByEmail")]
     public async Task<ActionResult<User>> GetUserByEmail(string email)
     {
          if (Request.Headers.TryGetValue("token", out var value))
@@ -49,7 +51,7 @@ public class UserController : Controller
         return Unauthorized();
     }
     [HttpGet]
-    [Route("getUserById")]
+    [Route("getById")]
     public async Task<ActionResult<User>> GetUserById(string _id)
     {
          if (Request.Headers.TryGetValue("token", out var value))
@@ -69,9 +71,9 @@ public class UserController : Controller
         return Unauthorized();
     }
 
-[HttpPut]
-    [Route("updateUser")]
-    public async Task<ActionResult<User>> UpdateUser(User updatedUser)
+    [HttpPut]
+    [Route("update")]
+    public async Task<ActionResult<User>> Update(User updatedUser)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {

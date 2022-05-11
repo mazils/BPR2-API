@@ -1,4 +1,7 @@
 
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using StudyIt;
 using StudyIt.MongoDB;
 using StudyIt.MongoDB.Models;
@@ -6,7 +9,6 @@ using StudyIt.MongoDB.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
-//var firebase = new Firebase();
 
 // CORS Test
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -25,12 +27,6 @@ builder.Services.AddCors(option =>
 // Add services to the container.
 builder.Services.Configure<StudyItDatabaseSettings>(
     builder.Configuration.GetSection("StudyItDatabase"));
-
-
-//firebase.initializeFirebase();
-
-// TODO Remove
-builder.Services.AddSingleton<LoginService>();
 
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<CompanyService>();
