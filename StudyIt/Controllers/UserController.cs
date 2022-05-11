@@ -80,7 +80,7 @@ public class UserController : Controller
             string  token = value;
             if (firebase.varify(token).Result)
             {
-                var result = await _userService.Update(updatedUser);
+                var result = await _userService.updateUser(updatedUser);
                 Console.WriteLine("as MatchedCount: "+ result.MatchedCount);
                  if (result.MatchedCount == 0)
                  {
