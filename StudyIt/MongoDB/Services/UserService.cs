@@ -32,7 +32,7 @@ public class UserService
     public async Task<User?> GetUserbyId(string _id) =>
         await _userCollection.AsQueryable<User>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
-//updating user
+    //updating user
      public async Task<ReplaceOneResult> updateUser(User updatedUser) =>
             await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
             
@@ -41,9 +41,10 @@ public class UserService
     public async Task UpdatePicture(string _id,byte[] fileBytes) =>
        
         await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
-
-    public async Task UpdatePersonallityProfile(string _id,byte[] fileBytes) =>
+        
+    ////updating picture
+    public async Task UpdatePersonalityProfile(string _id,byte[] fileBytes) =>
        
-        await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
+        await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.personalityProfile, fileBytes));
 }
 

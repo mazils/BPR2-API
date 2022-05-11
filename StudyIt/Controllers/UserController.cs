@@ -123,7 +123,7 @@ public class UserController : Controller
     }
 
     [HttpPut]
-    [Route("updatePersonallityProfile")]
+    [Route("updatePersonalityProfile")]
     public async Task<IActionResult> UpdatepersonallityProfile(string _id)
     {
         if (Request.Headers.TryGetValue("token", out var value))
@@ -143,7 +143,7 @@ public class UserController : Controller
                     {
                       file.CopyTo(ms);
                       byte[] fileBytes = ms.ToArray();
-                      await _userService.UpdatePersonallityProfile(_id,fileBytes);
+                      await _userService.UpdatePersonalityProfile(_id,fileBytes);
                     }
                 }
                 return Ok($"Received file {Path.GetFileName(file.FileName)} ");
