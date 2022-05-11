@@ -40,4 +40,9 @@ public class UserService
     public async Task UpdatePicture(string _id,byte[] fileBytes) =>
        
         await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
+
+    public async Task UpdatePersonallityProfile(string _id,byte[] fileBytes) =>
+       
+        await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
 }
+

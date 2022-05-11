@@ -120,6 +120,36 @@ public class UserController : Controller
         return Unauthorized();
     }
 
+    [HttpPut]
+    [Route("updatePersonallityProfile")]
+    public async Task<IActionResult> UpdatepersonallityProfile(string _id)
+    {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string  token = value;
+            if (firebase.varify(token).Result)
+            {
+                var formCollection = await Request.ReadFormAsync();
+                if(formCollection.Files.Count == 0)
+                {
+                     return NoContent();
+                }
+                var file = formCollection.Files.FirstOrDefault();
+                 if (file.Length > 0)
+                 {
+                    using (var ms = new MemoryStream())
+                    {
+                      file.CopyTo(ms);
+                      byte[] fileBytes = ms.ToArray();
+                      await _userService.UpdatePersonallityProfile(_id,fileBytes);
+                    }
+                }
+                return Ok($"Received file {Path.GetFileName(file.FileName)} ");
+            }
+        }
+        return Unauthorized();
+    }
+
     //just a template
     [HttpGet]
     [Route("tokenTest")]
