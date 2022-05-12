@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using StudyIt;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
@@ -179,7 +180,7 @@ public class UserController : Controller
         var imageExtension = FileConversion.AddFileExtension(decodedIntoString);
         
         System.Console.WriteLine(imageExtension);
-        return imageExtension;
+        return imageExtension.ToJson();
     }
     
     //just a template
