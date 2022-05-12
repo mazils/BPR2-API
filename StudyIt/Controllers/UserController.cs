@@ -163,7 +163,7 @@ public class UserController : Controller
         {
             return NotFound();
         }
-        return personalityProfile;
+        return File(personalityProfile, "application/pdf");
          
     }
     [HttpGet]

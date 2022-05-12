@@ -16,9 +16,13 @@ public static class FileConversion
             return string.Empty;
      }
     }
-    public static string BinToBase64String(byte[] picture)
+    public static string BinToBase64String(byte[] bin)
     {
-        return Convert.ToBase64String(picture);
+        return Convert.ToBase64String(bin);
+    }
+    public static byte[] Base64StringtoBin(string base64)
+    {
+        return Convert.FromBase64String(base64);
     }
     }
      
