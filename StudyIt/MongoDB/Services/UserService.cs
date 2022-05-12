@@ -37,14 +37,26 @@ public class UserService
             await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
             
     //updating picture
-
     public async Task UpdatePicture(string _id,byte[] fileBytes) =>
        
         await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
         
-    ////updating picture
+    //updating picture
     public async Task UpdatePersonalityProfile(string _id,byte[] fileBytes) =>
        
         await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.personalityProfile, fileBytes));
+    
+    //getting GetProfilePicture
+     public async Task<byte[]> GetProfilePicture(string _id) {
+        User user = await _userCollection.AsQueryable<User>().Where(e => e._id == _id).FirstOrDefaultAsync();
+        var profilePicture = user.profilePicture;
+        return profilePicture;
+     }
+    //getting personality profile
+     public async Task<byte[]> GetPersonalityProfile(string _id) {
+        User user = await _userCollection.AsQueryable<User>().Where(e => e._id == _id).FirstOrDefaultAsync();
+        var personalityProfile = user.profilePicture;
+        return personalityProfile;
+     }
 }
 

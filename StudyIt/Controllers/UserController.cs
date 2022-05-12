@@ -5,6 +5,7 @@ using StudyIt;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
+
 namespace StudyIt.Controllers;
 
 
@@ -152,6 +153,35 @@ public class UserController : Controller
         return Unauthorized();
     }
 
+    [HttpGet]
+    [Route("getPersonalityProfile")]
+    public async Task<ActionResult<byte[]>> GetpersonallityProfile(string _id)
+    {
+        var personalityProfile = await  _userService.GetPersonalityProfile(_id);  
+        if (personalityProfile == null)
+        {
+            return NotFound();
+        }
+        return personalityProfile;
+         
+    }
+    [HttpGet]
+    [Route("getProfilePicture")]
+    public async Task<ActionResult<string>>GetProfilePicture(string _id)
+    {
+        var picture = await  _userService.GetProfilePicture(_id);  
+        if (picture == null)
+        {
+            return NotFound();
+        }
+        var decodedIntoString = FileConversion.BinToBase64String(picture);
+
+        var imageExtension = FileConversion.AddFileExtension(decodedIntoString);
+        
+        System.Console.WriteLine(imageExtension);
+        return imageExtension;
+    }
+    
     //just a template
     [HttpGet]
     [Route("tokenTest")]
@@ -167,4 +197,8 @@ public class UserController : Controller
         }
         return Unauthorized();
     }
+
+
+
 }
+
