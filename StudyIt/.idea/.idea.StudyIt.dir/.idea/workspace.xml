@@ -27,7 +27,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/Controllers/UserController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/helperClasses/FileConversion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/helperClasses/FileConversion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/helperClasses/FileConversion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/helperClasses/FileConversion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/helperClasses/FileConversion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c4bf5b7e1f6dad83b16c10e468186df52ccb21277b3e31a56c4178a97/MongoClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/krogh/OneDrive/Dokumenter/GitHub/BPR/BPR2-Backend/StudyIt/helperClasses/FileConversion.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

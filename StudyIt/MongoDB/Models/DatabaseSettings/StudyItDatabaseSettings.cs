@@ -13,4 +13,7 @@ public class StudyItDatabaseSettings
     public string CompanyCollection { get; set; } = null!;
     public string PostCollection { get; set; } = null!;
     public string NotificationCollection { get; set; } = null!;
+    public string DefaultUserImage { get; set; } = null!;
+    public string DefaultPersonalityProfile { get; set; } = null!;
+    public string DefaultCompanyLogo { get; set; } = null!;
 }

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using StudyIt.MongoDB.Models;
@@ -9,6 +10,10 @@ namespace StudyIt.MongoDB.Services;
 public class UserService
 {
     private readonly IMongoCollection<User> _userCollection;
+    private readonly IMongoCollection<BsonDocument> _userCollectionRegister;
+
+    private readonly string _defaultUserImage;
+    private readonly string _defaultPersonalityProfile;
 
     public UserService(IOptions<StudyItDatabaseSettings> studyItDatabaseSettings)
     {
@@ -17,11 +22,46 @@ public class UserService
         var mongoDatabase = mongoClient.GetDatabase(studyItDatabaseSettings.Value.DatabaseName);
 
         _userCollection = mongoDatabase.GetCollection<User>(studyItDatabaseSettings.Value.UserCollection);
+        _userCollectionRegister =
+            mongoDatabase.GetCollection<BsonDocument>(studyItDatabaseSettings.Value.UserCollection);
+
+        _defaultUserImage = studyItDatabaseSettings.Value.DefaultUserImage;
+        _defaultPersonalityProfile = studyItDatabaseSettings.Value.DefaultPersonalityProfile;
     }
 
     // Creating a User
-    public async Task Register(User user) =>
-        await _userCollection.InsertOneAsync(user);
+    public async Task Register(User user)
+    {
+        Console.WriteLine(user);
+        var newLogin = new BsonDocument
+        {
+            {
+                "email", user.email
+            },
+            {
+                "name", user.name
+            },
+            {
+                "education", user.education
+            },
+            {
+                "phoneNumber", user.phoneNumber
+            },
+            {
+                "profilePicture", new BsonBinaryData(FileConversion.Base64StringtoBin(_defaultUserImage))
+            },
+            {
+                "personalityProfile", new BsonBinaryData(FileConversion.Base64StringtoBin(_defaultPersonalityProfile))
+            },
+            {
+                "competences", new BsonArray(user.competences)
+            },
+            {
+                "interests", new BsonArray(user.interests)
+            }
+        };
+        await _userCollectionRegister.InsertOneAsync(newLogin);
+    }
 
     // Finding a User by email
     public async Task<User?> GetUserByEmail(string email) =>
@@ -32,31 +72,34 @@ public class UserService
     public async Task<User?> GetUserbyId(string _id) =>
         await _userCollection.AsQueryable<User>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
-    //updating user
-     public async Task<ReplaceOneResult> updateUser(User updatedUser) =>
-            await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
-            
-    //updating picture
-    public async Task UpdatePicture(string _id,byte[] fileBytes) =>
-       
-        await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
-        
-    //updating picture
-    public async Task UpdatePersonalityProfile(string _id,byte[] fileBytes) =>
-       
-        await _userCollection.UpdateOneAsync(x => x._id == _id, Builders<User>.Update.Set(x => x.personalityProfile, fileBytes));
-    
-    //getting GetProfilePicture
-     public async Task<byte[]> GetProfilePicture(string _id) {
+
+    // Updating user
+    public async Task<ReplaceOneResult> UpdateUser(User updatedUser) =>
+        await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
+
+    // Updating picture
+    public async Task UpdatePicture(string _id, byte[] fileBytes) =>
+        await _userCollection.UpdateOneAsync(x => x._id == _id,
+            Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
+
+    // Updating picture
+    public async Task UpdatePersonalityProfile(string _id, byte[] fileBytes) =>
+        await _userCollection.UpdateOneAsync(x => x._id == _id,
+            Builders<User>.Update.Set(x => x.personalityProfile, fileBytes));
+
+    // Getting Profile Picture
+    public async Task<byte[]> GetProfilePicture(string _id)
+    {
         User user = await _userCollection.AsQueryable<User>().Where(e => e._id == _id).FirstOrDefaultAsync();
         var profilePicture = user.profilePicture;
         return profilePicture;
-     }
-    //getting personality profile
-     public async Task<byte[]> GetPersonalityProfile(string _id) {
-        User user = await _userCollection.AsQueryable<User>().Where(e => e._id == _id).FirstOrDefaultAsync();
-        var personalityProfile = user.profilePicture;
-        return personalityProfile;
-     }
-}
+    }
 
+    // Getting Personality Profile
+    public async Task<byte[]> GetPersonalityProfile(string _id)
+    {
+        User user = await _userCollection.AsQueryable<User>().Where(e => e._id == _id).FirstOrDefaultAsync();
+        var personalityProfile = user.personalityProfile;
+        return personalityProfile;
+    }
+}
