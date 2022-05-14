@@ -32,7 +32,6 @@ public class UserService
     // Creating a User
     public async Task Register(User user)
     {
-        Console.WriteLine(user);
         var newLogin = new BsonDocument
         {
             {
@@ -64,12 +63,12 @@ public class UserService
     }
 
     // Finding a User by email
-    public async Task<User?> GetUserByEmail(string email) =>
+    public async Task<User?> GetByEmail(string email) =>
         await _userCollection.AsQueryable<User>()
             .Where(e => e.email == email).FirstOrDefaultAsync();
 
     // Finding a User by id  
-    public async Task<User?> GetUserbyId(string _id) =>
+    public async Task<User?> GetById(string _id) =>
         await _userCollection.AsQueryable<User>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
 
@@ -77,12 +76,12 @@ public class UserService
     public async Task<ReplaceOneResult> UpdateUser(User updatedUser) =>
         await _userCollection.ReplaceOneAsync(r => r._id == updatedUser._id, updatedUser);
 
-    // Updating picture
+    // Updating Profile Picture
     public async Task UpdatePicture(string _id, byte[] fileBytes) =>
         await _userCollection.UpdateOneAsync(x => x._id == _id,
             Builders<User>.Update.Set(x => x.profilePicture, fileBytes));
 
-    // Updating picture
+    // Updating Personality Profile
     public async Task UpdatePersonalityProfile(string _id, byte[] fileBytes) =>
         await _userCollection.UpdateOneAsync(x => x._id == _id,
             Builders<User>.Update.Set(x => x.personalityProfile, fileBytes));
