@@ -28,7 +28,7 @@ public class PostController : Controller
             string token = value;
             if (firebase.varify(token).Result)
             {
-                 await _postService.createPost(post);
+                await _postService.createPost(post);
             }
         }
         return Unauthorized();

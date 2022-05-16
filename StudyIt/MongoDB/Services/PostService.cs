@@ -50,5 +50,7 @@ public class PostService
             }
         };
         await _postCollectionCreate.InsertOneAsync(newPost);
+        
+        
     }
 }

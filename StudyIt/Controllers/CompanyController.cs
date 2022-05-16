@@ -92,12 +92,12 @@ public class CompanyController : Controller
             {
                 // Converts the Logo into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryCompany(updatedUser);
-                var result = await _companyService.UpdateCompany(userDto);
-                Console.WriteLine("as MatchedCount: " + result.MatchedCount);
-                if (result.MatchedCount == 0)
-                {
-                    return NotFound();
-                }
+                 await _companyService.UpdateCompany(userDto);
+                // Console.WriteLine("as MatchedCount: " + result.MatchedCount);
+                // if (result.MatchedCount == 0)
+                // {
+                //     return NotFound();
+                // }
 
                 return Ok();
             }
