@@ -1,10 +1,11 @@
+using System.Runtime.InteropServices;
 using StudyIt.MongoDB.Models;
 
 namespace StudyIt.helperClasses;
 
 public class DataTransferObject
 {
-    public static User ConvertBase64ToBinary(UserDTO receivedUser)
+    public static User ConvertBase64ToBinaryUser(UserDTO receivedUser)
     {
         User user = new User();
 
@@ -19,5 +20,21 @@ public class DataTransferObject
         user.interests = receivedUser.interests;
 
         return user;
+    }
+    
+    public static Company ConvertBase64ToBinaryCompany(CompanyDTO receivedCompany)
+    {
+        Company company = new Company();
+
+        company._id = receivedCompany._id;
+        company.email = receivedCompany.email;
+        company.name = receivedCompany.name;
+        company.cvr = receivedCompany.cvr;
+        company.location = receivedCompany.location;
+        company.phoneNumber = receivedCompany.phoneNumber;
+        company.description = receivedCompany.description;
+        company.logo = FileConversion.Base64StringtoBin(receivedCompany.logo);
+
+        return company;
     }
 }

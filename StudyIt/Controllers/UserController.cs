@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -43,7 +45,7 @@ public class UserController : Controller
             string token = value;
             if (firebase.varify(token).Result)
             {
-                var user = await _userService.GetUserByEmail(email);
+                var user = await _userService.GetByEmail(email);
                 Console.WriteLine(user.name);
                 if (user == null)
                 {
@@ -66,7 +68,7 @@ public class UserController : Controller
             string token = value;
             if (firebase.varify(token).Result)
             {
-                var user = await _userService.GetUserbyId(_id);
+                var user = await _userService.GetById(_id);
                 if (user == null)
                 {
                     return NotFound();
@@ -88,8 +90,8 @@ public class UserController : Controller
             string token = value;
             if (firebase.varify(token).Result)
             {
-                // Converts the Profile Picture and Personality Profile into an byte[]
-                var userDto = DataTransferObject.ConvertBase64ToBinary(updatedUser);
+                // Converts the Profile Picture and Personality Profile into a byte[]
+                var userDto = DataTransferObject.ConvertBase64ToBinaryUser(updatedUser);
                 var result = await _userService.UpdateUser(userDto);
                 Console.WriteLine("as MatchedCount: " + result.MatchedCount);
                 if (result.MatchedCount == 0)
@@ -126,7 +128,6 @@ public class UserController : Controller
                     {
                         file.CopyTo(ms);
                         byte[] fileBytes = ms.ToArray();
-                        Console.WriteLine("Sending picture to database");
                         await _userService.UpdatePicture(_id, fileBytes);
                     }
                 }
@@ -160,7 +161,6 @@ public class UserController : Controller
                     {
                         file.CopyTo(ms);
                         byte[] fileBytes = ms.ToArray();
-                        Console.WriteLine("Sending PDF to database");
                         await _userService.UpdatePersonalityProfile(_id, fileBytes);
                     }
                 }
