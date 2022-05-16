@@ -29,7 +29,7 @@ public class PostController : Controller
             if (firebase.varify(token).Result)
             {
                 await _postService.createPost(post);
-                return Created("Post/create",post);
+                return Created("Post/create",post.title);
             }
         }
         return Unauthorized();
