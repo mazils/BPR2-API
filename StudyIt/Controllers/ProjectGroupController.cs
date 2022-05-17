@@ -59,5 +59,21 @@ public class ProjectGroupController : Controller
 
 
     }
+    [HttpGet]
+    [Route("get")]
+    public async Task<ActionResult<ProjectGroup>> GetGroup(string email)
+    {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string token = value;
+            if (firebase.varify(token).Result)
+            {
+                var group = await _projectGroupService.GetGroup(email);
+                return group;
+            }
+        }
+
+        return Unauthorized();
+    }
 
 }

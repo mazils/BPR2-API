@@ -36,5 +36,9 @@ public class ProjectGroupService
         
     }
 
+    //getting project group
+    public async Task<ProjectGroup> GetGroup(string email)=>
+     await _ProjectGroupCollection.AsQueryable<ProjectGroup>()
+            .Where(e => e.userEmails.Contains(email)).FirstOrDefaultAsync();
 
 }
