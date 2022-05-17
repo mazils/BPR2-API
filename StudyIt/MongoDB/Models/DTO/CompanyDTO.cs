@@ -1,12 +1,7 @@
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
 namespace StudyIt.MongoDB.Models;
 
-public class Company
+public class CompanyDTO
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string? _id { get; set; }
 
     public string email { get; set; } = null!;
@@ -15,5 +10,5 @@ public class Company
     public string? location { get; set; }
     public string? phoneNumber { get; set; }
     public string? description { get; set; }
-    public byte[]? logo { get; set; }
+    public string? logo { get; set; }
 }
