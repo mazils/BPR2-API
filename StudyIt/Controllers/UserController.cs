@@ -28,12 +28,10 @@ public class UserController : Controller
     [HttpPost]
     [Route("register")]
     public async Task<IActionResult> Register(User newUser)
-    {
+    {   
+    
         await _userService.Register(newUser);
-
-        Console.WriteLine(newUser);
-
-        return CreatedAtAction(nameof(GetUserByEmail), new { email = newUser.email }, newUser);
+        return Ok();
     }
 
     [HttpGet]

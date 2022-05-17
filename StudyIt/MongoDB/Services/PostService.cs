@@ -23,7 +23,7 @@ public class PostService
     }
 
     // Creating a post
-    public async Task createPost(Post post)
+    public async Task CreatePost(Post post)
     {
         var newPost = new BsonDocument
         {

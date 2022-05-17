@@ -44,7 +44,7 @@ public class UserService
                 "education", user.education
             },
             {
-                "phoneNumber", user.phoneNumber
+                "phoneNumber", new BsonString("")
             },
             {
                 "profilePicture", new BsonBinaryData(FileConversion.Base64StringtoBin(_defaultUserImage))
@@ -53,10 +53,16 @@ public class UserService
                 "personalityProfile", new BsonBinaryData(FileConversion.Base64StringtoBin(_defaultPersonalityProfile))
             },
             {
-                "competences", new BsonArray(user.competences)
+                "competences", new BsonArray
+                {
+                    ""
+                }
             },
             {
-                "interests", new BsonArray(user.interests)
+                "interests", new BsonArray
+                {
+                    ""
+                }
             }
         };
         await _userCollectionRegister.InsertOneAsync(newLogin);

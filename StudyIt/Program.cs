@@ -31,6 +31,7 @@ builder.Services.Configure<StudyItDatabaseSettings>(
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<CompanyService>();
 builder.Services.AddSingleton<PostService>();
+builder.Services.AddSingleton<ProjectGroupService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(
