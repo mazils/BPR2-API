@@ -47,12 +47,12 @@ public class ProjectGroupController : Controller
                     }
                 }
                 projectGroup.competences = allCompetences.Distinct().ToList();
-                bool isCreated = await _projectGroupService.CreateGroup(projectGroup);
-                if (isCreated)
+                string error = await _projectGroupService.CreateGroup(projectGroup);
+                if (error == string.Empty)
                 {
                     return Ok();
                 }
-                return Conflict();
+                return Conflict(error);
             }
         }
         return Unauthorized();

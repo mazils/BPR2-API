@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using StudyIt.MongoDB.Models;
 namespace StudyIt.MongoDB.Services;
+using System.Text.RegularExpressions;
 public class ProjectGroupService
 {
     private readonly IMongoCollection<User> _userCollection;
@@ -21,19 +22,21 @@ public class ProjectGroupService
     }
 
     //creating project group
-    public async Task<bool> CreateGroup(ProjectGroup projectGroup)
+    public async Task<String> CreateGroup(ProjectGroup projectGroup)
     {
         try
         {
             await _ProjectGroupCollection.InsertOneAsync(projectGroup);
-            return true;
+            return string.Empty;
         }
-        catch (MongoWriteException e)
+          catch (MongoWriteException e)
         {
+           
+            return Regex.Replace(e.Message.Split("dup key: ")[1],"[{\"}]", string.Empty).TrimEnd('.').Trim();
             
-            return false;
         }
         
+      
     }
 
     //getting project group
