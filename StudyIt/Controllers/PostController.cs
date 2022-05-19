@@ -28,13 +28,26 @@ public class PostController : Controller
             string token = value;
             if (firebase.varify(token).Result)
             {
-                await _postService.createPost(post);
+                await _postService.CreatePost(post);
                 return Created("Post/create",post.title);
             }
         }
         return Unauthorized();
-      
-       
+    }
+
+    [HttpGet]
+    [Route("GetById")]
+    public async Task<ActionResult<Post>> GetById(string _id)
+    {
+         if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string token = value;
+            if (firebase.varify(token).Result)
+            {
+                return await _postService.GetPostById(_id);
+            }
+        }
+        return Unauthorized();
     }
 
 }
