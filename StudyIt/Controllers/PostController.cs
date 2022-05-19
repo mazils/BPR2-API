@@ -33,8 +33,21 @@ public class PostController : Controller
             }
         }
         return Unauthorized();
-      
-       
+    }
+
+    [HttpGet]
+    [Route("GetById")]
+    public async Task<ActionResult<Post>> GetById(string _id)
+    {
+         if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string token = value;
+            if (firebase.varify(token).Result)
+            {
+                return await _postService.GetPostById(_id);
+            }
+        }
+        return Unauthorized();
     }
 
 }

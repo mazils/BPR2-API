@@ -49,8 +49,11 @@ public class PostService
                 "companyId", post.companyId
             }
         };
-        await _postCollectionCreate.InsertOneAsync(newPost);
-        
-        
+        await _postCollectionCreate.InsertOneAsync(newPost); 
     }
+
+ // Creating a post
+    public async Task<Post?> GetPostById(string _id)=>
+        await _postCollection.AsQueryable<Post>()
+            .Where(e => e.companyId == _id).FirstOrDefaultAsync();
 }
