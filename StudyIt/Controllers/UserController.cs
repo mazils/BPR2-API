@@ -28,8 +28,7 @@ public class UserController : Controller
     [HttpPost]
     [Route("register")]
     public async Task<IActionResult> Register(User newUser)
-    {   
-    
+    {
         await _userService.Register(newUser);
         return Ok();
     }
@@ -41,7 +40,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var user = await _userService.GetByEmail(email);
                 Console.WriteLine(user.name);
@@ -64,7 +63,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var user = await _userService.GetById(_id);
                 if (user == null)
@@ -86,7 +85,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 // Converts the Profile Picture and Personality Profile into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryUser(updatedUser);
@@ -111,7 +110,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -139,12 +138,12 @@ public class UserController : Controller
 
     [HttpPut]
     [Route("updatePersonalityProfile")]
-    public async Task<IActionResult> UpdatepersonalityProfile(string _id)
+    public async Task<IActionResult> UpdatePersonalityProfile(string _id)
     {
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -172,32 +171,50 @@ public class UserController : Controller
 
     [HttpGet]
     [Route("getPersonalityProfile")]
-    public async Task<ActionResult<byte[]>> GetpersonallityProfile(string _id)
+    public async Task<ActionResult<byte[]>> GetPersonalityProfile(string _id)
     {
-        var personalityProfile = await _userService.GetPersonalityProfile(_id);
-        if (personalityProfile == null)
+        if (Request.Headers.TryGetValue("token", out var value))
         {
-            return NotFound();
+            string token = value;
+            if (firebase.Verify(token).Result)
+            {
+                var personalityProfile = await _userService.GetPersonalityProfile(_id);
+                if (personalityProfile == null)
+                {
+                    return NotFound();
+                }
+
+                return personalityProfile;
+            }
         }
 
-        return personalityProfile;
+        return Unauthorized();
     }
 
     [HttpGet]
     [Route("getProfilePicture")]
     public async Task<ActionResult<string>> GetProfilePicture(string _id)
     {
-        var picture = await _userService.GetProfilePicture(_id);
-        if (picture == null)
+        if (Request.Headers.TryGetValue("token", out var value))
         {
-            return NotFound();
+            string token = value;
+            if (firebase.Verify(token).Result)
+            {
+                var picture = await _userService.GetProfilePicture(_id);
+                if (picture == null)
+                {
+                    return NotFound();
+                }
+
+                var decodedIntoString = FileConversion.BinToBase64String(picture);
+
+                var imageExtension = FileConversion.AddFileExtension(decodedIntoString);
+
+                return imageExtension.ToJson();
+            }
         }
 
-        var decodedIntoString = FileConversion.BinToBase64String(picture);
-
-        var imageExtension = FileConversion.AddFileExtension(decodedIntoString);
-
-        return imageExtension.ToJson();
+        return Unauthorized();
     }
 
     //just a template
@@ -208,7 +225,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 return Ok();
             }

@@ -1,7 +1,3 @@
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using StudyIt.helperClasses;
@@ -16,7 +12,7 @@ public class CompanyController : Controller
 {
     private readonly CompanyService _companyService;
     private Firebase firebase;
-    
+
     public CompanyController(CompanyService companyService)
     {
         _companyService = companyService;
@@ -38,12 +34,9 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
-                Console.WriteLine("Company Login");
-                Console.WriteLine("Company");
                 var company = await _companyService.GetByEmail(email);
-                Console.WriteLine(company.email);
 
                 if (company == null)
                 {
@@ -64,7 +57,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var company = await _companyService.GetById(_id);
 
@@ -88,11 +81,11 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 // Converts the Logo into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryCompany(updatedUser);
-                 await _companyService.UpdateCompany(userDto);
+                await _companyService.UpdateCompany(userDto);
                 // Console.WriteLine("as MatchedCount: " + result.MatchedCount);
                 // if (result.MatchedCount == 0)
                 // {
@@ -105,7 +98,7 @@ public class CompanyController : Controller
 
         return Unauthorized();
     }
-    
+
     [HttpPut]
     [Route("updateLogo")]
     public async Task<IActionResult> UpdateLogo(string _id)
@@ -113,7 +106,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -138,7 +131,7 @@ public class CompanyController : Controller
 
         return Unauthorized();
     }
-    
+
     [HttpGet]
     [Route("getLogo")]
     public async Task<ActionResult<string>> GetProfilePicture(string _id)

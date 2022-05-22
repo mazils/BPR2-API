@@ -22,7 +22,6 @@ public class SearchController : Controller
         if(search == null) {
             return NotFound();
         }
-        Console.WriteLine("Controller: " + search);
         return Ok(search);
     }
 }

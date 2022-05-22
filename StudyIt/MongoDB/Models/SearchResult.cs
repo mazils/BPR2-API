@@ -1,5 +1,3 @@
-using MongoDB.Bson;
-
 namespace StudyIt.MongoDB.Models;
 
 public class SearchResult
