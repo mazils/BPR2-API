@@ -139,7 +139,7 @@ public class UserController : Controller
 
     [HttpPut]
     [Route("updatePersonalityProfile")]
-    public async Task<IActionResult> UpdatepersonallityProfile(string _id)
+    public async Task<IActionResult> UpdatepersonalityProfile(string _id)
     {
         if (Request.Headers.TryGetValue("token", out var value))
         {

@@ -8,19 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="779aab6d-d1e4-4bb7-8bda-947990b3908f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CompanyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CompanyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Firebase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Firebase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Application.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Application.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Post.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="779aab6d-d1e4-4bb7-8bda-947990b3908f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,6 +90,8 @@
       <workItem from="1648975369896" duration="5552000" />
       <workItem from="1650541240525" duration="7603000" />
       <workItem from="1650634544786" duration="640000" />
+      <workItem from="1653128060867" duration="4959000" />
+      <workItem from="1653212079833" duration="3343000" />
     </task>
     <servers />
   </component>

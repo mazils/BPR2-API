@@ -42,13 +42,13 @@ public class CompanyService
                 "cvr", company.cvr
             },
             {
-                "location", company.location
+                "location", new BsonString("")
             },
             {
-                "phoneNumber", company.phoneNumber
+                "phoneNumber", new BsonString("")
             },
             {
-                "description", company.description
+                "description", new BsonString("")
             },
             {
                 "logo", new BsonBinaryData(FileConversion.Base64StringtoBin(_defaultCompanyLogo))

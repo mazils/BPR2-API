@@ -37,14 +37,21 @@ public class PostController : Controller
 
     [HttpGet]
     [Route("GetById")]
-    public async Task<ActionResult<Post>> GetById(string _id)
+    public async Task<IActionResult> GetById(string _id)
     {
          if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
             if (firebase.varify(token).Result)
             {
-                return await _postService.GetPostById(_id);
+                var allPosts = await _postService.GetAllCompanyPosts(_id);
+
+                if (allPosts == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(allPosts);
             }
         }
         return Unauthorized();

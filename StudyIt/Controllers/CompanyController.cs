@@ -28,10 +28,7 @@ public class CompanyController : Controller
     public async Task<IActionResult> Register(Company newCompany)
     {
         await _companyService.Register(newCompany);
-
-        Console.WriteLine(newCompany);
-
-        return CreatedAtAction(nameof(GetCompanyByEmail), new { email = newCompany.email }, newCompany);
+        return Ok();
     }
 
     [HttpGet]
@@ -43,7 +40,10 @@ public class CompanyController : Controller
             string token = value;
             if (firebase.varify(token).Result)
             {
+                Console.WriteLine("Company Login");
+                Console.WriteLine("Company");
                 var company = await _companyService.GetByEmail(email);
+                Console.WriteLine(company.email);
 
                 if (company == null)
                 {
