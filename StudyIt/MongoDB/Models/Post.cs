@@ -19,5 +19,5 @@ public class Post
     public DateTime deadline { get; set; } // Cannot be set such its not allowed to be null, has to be done in front-end
     public string companyId { get; set; }
     
-    public Application[]? application { get; set; }
+    public List<Application>? application { get; set; }
 }

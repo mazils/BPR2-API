@@ -34,7 +34,7 @@ public class PostController : Controller
         }
         return Unauthorized();
     }
-
+    //get post by post id
     [HttpGet]
     [Route("GetById")]
     public async Task<ActionResult<Post>> GetById(string _id)
@@ -68,6 +68,34 @@ public class PostController : Controller
                 }
 
                 return Ok(allPosts);
+            }
+        }
+        return Unauthorized();
+    }
+    //apply with post id and project group
+    [HttpPut]
+    [Route("Apply")]
+    public async Task<IActionResult> ApplyToPost(string postId,Application applicationFromUser)
+    {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string token = value;
+            if (firebase.varify(token).Result)
+            {
+                var post = await _postService.GetPostById(postId);
+                foreach (var application in post.application)
+                {
+                    if (application.applicants.Contains(applicationFromUser.applicants.ElementAt(0)))
+                    {
+                        return Conflict("Already applied");
+                    }
+                }
+                var result = await _postService.ApplyToPost(postId,applicationFromUser);
+                if (result.MatchedCount == 0)
+                {
+                    return NotFound();
+                }
+                return Ok("Successfully applied");
             }
         }
         return Unauthorized();

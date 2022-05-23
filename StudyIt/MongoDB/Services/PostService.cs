@@ -55,7 +55,7 @@ public class PostService
     // getting one post
     public async Task<Post?> GetPostById(string _id) =>
            await _postCollection.AsQueryable<Post>()
-               .Where(e => e.companyId == _id).FirstOrDefaultAsync();
+               .Where(e => e._id == _id).FirstOrDefaultAsync();
 
     // getting all posts
     public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
@@ -86,4 +86,16 @@ public class PostService
     }
 
 
+    public async Task<UpdateResult> ApplyToPost(string postId,Application applicationFromUser)
+    {
+        Application application = new Application();
+        application.applicants = applicationFromUser.applicants;
+        application.status = "In progress";
+        application._id = ObjectId.GenerateNewId();
+        var filterBuilder = Builders<Post>.Filter;
+        var filter = filterBuilder.Eq(x => x._id, postId);
+        var updateBuilder = Builders<Post>.Update;
+        var update = updateBuilder.Push(doc => doc.application,application );
+        return await _postCollection.UpdateOneAsync(filter, update);
+    }
 }

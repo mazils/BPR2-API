@@ -7,9 +7,9 @@ namespace StudyIt.MongoDB.Models;
 public class Application
 {
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? _id { get; set; }
+    // [BsonRepresentation(BsonType.ObjectId)]
+    public ObjectId? _id { get; set; }
 
     public List<string> applicants { get; set; } = null!;
-    public string status { get; set; } = null!;
+    public string? status { get; set; } = null!;
 }
