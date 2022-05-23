@@ -50,36 +50,40 @@ public class PostService
                 "companyId", post.companyId
             }
         };
-        await _postCollectionCreate.InsertOneAsync(newPost); 
+        await _postCollectionCreate.InsertOneAsync(newPost);
+    }
+    // getting one post
+    public async Task<Post?> GetPostById(string _id) =>
+           await _postCollection.AsQueryable<Post>()
+               .Where(e => e.companyId == _id).FirstOrDefaultAsync();
+
+    // getting all posts
+    public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
+    {
+        var dataFacet = AggregateFacet.Create("dataFacet",
+            PipelineDefinition<Post, Post>.Create(new[]
+            {
+             PipelineStageDefinitionBuilder.Sort(Builders<Post>.Sort.Ascending(x => x.deadline))
+            }));
+
+        var filter = Builders<Post>.Filter.Eq(x => x.companyId, _id);
+
+        var aggregation = await _postCollection.Aggregate()
+            .Match(filter)
+            .Facet(dataFacet)
+            .ToListAsync();
+
+        var data = aggregation.First()
+            .Facets.First(x => x.Name == "dataFacet")
+            .Output<Post>();
+
+        var allCompanyPosts = new AllCompanyPosts()
+        {
+            data = data
+        };
+
+        return allCompanyPosts;
     }
 
- // Creating all posts
- public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
- {
-     var dataFacet = AggregateFacet.Create("dataFacet",
-         PipelineDefinition<Post, Post>.Create(new[]
-         {
-             PipelineStageDefinitionBuilder.Sort(Builders<Post>.Sort.Ascending(x => x.deadline))
-         }));
 
-     var filter = Builders<Post>.Filter.Eq(x => x.companyId, _id);
-     
-     var aggregation = await _postCollection.Aggregate()
-         .Match(filter)
-         .Facet(dataFacet)
-         .ToListAsync();
-     
-     var data = aggregation.First()
-         .Facets.First(x => x.Name == "dataFacet")
-         .Output<Post>();
-
-     var allCompanyPosts = new AllCompanyPosts()
-     {
-         data = data
-     };
-
-     return allCompanyPosts;
- }
- 
- 
 }
