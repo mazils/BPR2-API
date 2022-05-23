@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using StudyIt.helperClasses;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
@@ -34,17 +35,32 @@ public class PostController : Controller
 
         return Unauthorized();
     }
-
+    
     [HttpGet]
     [Route("GetById")]
     public async Task<ActionResult<Post>> GetById(string _id)
     {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string token = value;
+            if (firebase.Verify(token).Result)
+            {
+                return await _postService.GetPostById(_id);
+            }
+        }
+        return Unauthorized();
+    }
+
+    [HttpGet]
+    [Route("GetByCompanyId")]
+    public async Task<ActionResult<Post>> GetByCompanyId(string _id)
+    {
          if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
-                return await _postService.GetPostById(_id);
+                return await _postService.GetPostByCompanyId(_id);
             }
         }
         return Unauthorized();
@@ -68,6 +84,30 @@ public class PostController : Controller
                 }
 
                 return Ok(allPosts);
+            }
+        }
+
+        return Unauthorized();
+    }
+
+    [HttpPut]
+    [Route("update")]
+    public async Task<IActionResult> Update(PostDTO updatedPost)
+    {
+        if (Request.Headers.TryGetValue("token", out var value))
+        {
+            string token = value;
+            if (firebase.Verify(token).Result)
+            {
+                var userDto = DataTransferObject.ConvertStringToDateTimePost(updatedPost);
+                var result = await _postService.UpdatePost(userDto);
+                // Console.WriteLine("as MatchedCount: " + result.MatchedCount);
+                if (result.MatchedCount == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok();
             }
         }
 

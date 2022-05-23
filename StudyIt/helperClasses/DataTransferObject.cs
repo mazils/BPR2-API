@@ -37,4 +37,20 @@ public class DataTransferObject
 
         return company;
     }
+
+    public static Post ConvertStringToDateTimePost(PostDTO receivedPost)
+    {
+        Post post = new Post();
+
+        post._id = receivedPost._id;
+        post.title = receivedPost.title;
+        post.description = receivedPost.description;
+        post.location = receivedPost.location;
+        post.competences = receivedPost.competences;
+        post.type = receivedPost.type;
+        post.deadline = FileConversion.DateStringToDate(receivedPost.deadline);
+        post.companyId = receivedPost.companyId;
+
+        return post;
+    }
 }

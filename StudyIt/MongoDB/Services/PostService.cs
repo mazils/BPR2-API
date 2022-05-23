@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
@@ -79,8 +80,15 @@ public class PostService
     }
 
     // getting one post
-    public async Task<Post?> GetPostById(string _id) =>
+    public async Task<Post?> GetPostByCompanyId(string _id) =>
            await _postCollection.AsQueryable<Post>()
                .Where(e => e.companyId == _id).FirstOrDefaultAsync();
+    
+    public async Task<Post?> GetPostById(string _id) =>
+        await _postCollection.AsQueryable<Post>()
+            .Where(e => e._id == _id).FirstOrDefaultAsync();
+
+    public async Task<ReplaceOneResult> UpdatePost(Post updatedPost) =>
+        await _postCollection.ReplaceOneAsync(r => r._id == updatedPost._id, updatedPost);
 
 }
