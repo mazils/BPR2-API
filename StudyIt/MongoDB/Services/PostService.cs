@@ -77,4 +77,10 @@ public class PostService
 
         return allCompanyPosts;
     }
+
+    // getting one post
+    public async Task<Post?> GetPostById(string _id) =>
+           await _postCollection.AsQueryable<Post>()
+               .Where(e => e.companyId == _id).FirstOrDefaultAsync();
+
 }
