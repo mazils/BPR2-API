@@ -66,7 +66,6 @@ public class PostController : Controller
                 {
                     return NotFound();
                 }
-
                 return Ok(allPosts);
             }
         }
@@ -83,11 +82,14 @@ public class PostController : Controller
             if (firebase.varify(token).Result)
             {
                 var post = await _postService.GetPostById(postId);
-                foreach (var application in post.application)
+                if (post.application != null)
                 {
-                    if (application.applicants.Contains(applicationFromUser.applicants.ElementAt(0)))
+                    foreach (var application in post.application)
                     {
-                        return Conflict("Already applied");
+                        if (application.applicants.Contains(applicationFromUser.applicants.ElementAt(0)))
+                        {
+                            return Conflict("Already applied");
+                        }
                     }
                 }
                 var result = await _postService.ApplyToPost(postId,applicationFromUser);

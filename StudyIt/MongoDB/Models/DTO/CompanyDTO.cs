@@ -6,7 +6,7 @@ public class CompanyDTO
 
     public string email { get; set; } = null!;
     public string name { get; set; } = null!;
-    public string cvr { get; set; } = null!;
+    public int cvr { get; set; } 
     public string? location { get; set; }
     public string? phoneNumber { get; set; }
     public string? description { get; set; }
