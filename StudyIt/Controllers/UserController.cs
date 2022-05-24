@@ -42,9 +42,7 @@ public class UserController : Controller
             string token = value;
             if (firebase.Verify(token).Result)
             {
-                Console.WriteLine("verified");
                 var user = await _userService.GetByEmail(email);
-                Console.WriteLine(user.name);
                 if (user == null)
                 {
                     return NotFound();

@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -40,7 +43,7 @@ public class SearchService
             }));
 
         var filterDate = Builders<Post>.Filter.Gte(x => x.deadline, DateTime.UtcNow);
-        var filterSearch = Builders<Post>.Filter.Text(searchTerm);
+        var filterSearch = Builders<Post>.Filter.Regex(x => x.title, new BsonRegularExpression(searchTerm, "i"));
 
         var filterLocation = Builders<Post>.Filter.Eq(x => x.location, location);
         var filterType = Builders<Post>.Filter.Eq(x => x.type, type);

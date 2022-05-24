@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace StudyIt.MongoDB.Models;
 
 public class SearchResult

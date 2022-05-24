@@ -9,12 +9,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="779aab6d-d1e4-4bb7-8bda-947990b3908f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MongoDB/Models/DTO/PostDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/CompanyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CompanyController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/PostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ProjectGroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProjectGroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/AllCompanyPosts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/AllCompanyPosts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Application.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Application.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/DTO/PostDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/DTO/PostDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/DTO/UserDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/DTO/UserDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Post.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/SearchResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MongoDB/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/PostService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helperClasses/DataTransferObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/helperClasses/DataTransferObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/ProjectGroupService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/ProjectGroupService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/SearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/SearchService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helperClasses/FileConversion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/helperClasses/FileConversion.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

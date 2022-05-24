@@ -1,3 +1,5 @@
+using System;
+
 public static class FileConversion
 {
     public static string AddFileExtension(string base64String)
