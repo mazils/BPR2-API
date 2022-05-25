@@ -97,7 +97,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var post = await _postService.GetPostById(postId);
                 if (post.application != null)

@@ -52,10 +52,7 @@ public class PostService
         };
         await _postCollectionCreate.InsertOneAsync(newPost);
     }
-    // getting one post
-    public async Task<Post?> GetPostById(string _id) =>
-           await _postCollection.AsQueryable<Post>()
-               .Where(e => e._id == _id).FirstOrDefaultAsync();
+   
 
     // Getting all company posts
     public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
