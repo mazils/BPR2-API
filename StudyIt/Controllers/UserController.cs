@@ -1,14 +1,8 @@
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
-using StudyIt;
 using StudyIt.helperClasses;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
-
 
 namespace StudyIt.Controllers;
 
@@ -16,13 +10,13 @@ namespace StudyIt.Controllers;
 [Route("[Controller]")]
 public class UserController : Controller
 {
-    private readonly UserService _userService;
-    private Firebase firebase;
+    private readonly IUserService _userService;
+    private IFirebaseAutharization _firebaseAutharization;
 
     public UserController(UserService userService)
     {
         _userService = userService;
-        firebase = Firebase.GetInstance();
+        _firebaseAutharization = FirebaseAutharization.GetInstance();
     }
 
     [HttpPost]
@@ -40,7 +34,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var user = await _userService.GetByEmail(email);
                 if (user == null)
@@ -62,7 +56,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var user = await _userService.GetById(_id);
                 if (user == null)
@@ -84,7 +78,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 // Converts the Profile Picture and Personality Profile into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryUser(updatedUser);
@@ -109,7 +103,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -142,7 +136,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -175,7 +169,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var personalityProfile = await _userService.GetPersonalityProfile(_id);
                 if (personalityProfile == null)
@@ -197,7 +191,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var picture = await _userService.GetProfilePicture(_id);
                 if (picture == null)
@@ -224,7 +218,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 return Ok();
             }

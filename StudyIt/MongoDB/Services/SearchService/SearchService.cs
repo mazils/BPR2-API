@@ -9,7 +9,7 @@ using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
 
-public class SearchService
+public class SearchService: ISearchService
 {
     private readonly IMongoCollection<Post> _posts;
 

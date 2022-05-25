@@ -1,7 +1,4 @@
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
 namespace StudyIt.Controllers;
@@ -10,7 +7,7 @@ namespace StudyIt.Controllers;
 [Route("[Controller]")]
 public class SearchController : Controller
 {
-    private readonly SearchService _guestService;
+    private readonly ISearchService _guestService;
 
     public SearchController(SearchService guestService) => _guestService = guestService;
 
@@ -20,9 +17,11 @@ public class SearchController : Controller
     {
         var search = await _guestService.GetSearchResult(searchTerm, location, type, page);
 
-        if(search == null) {
+        if (search == null)
+        {
             return NotFound();
         }
+
         return Ok(search);
     }
 }

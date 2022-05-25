@@ -1,6 +1,3 @@
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using StudyIt.helperClasses;
@@ -13,13 +10,13 @@ namespace StudyIt.Controllers;
 [Route("[Controller]")]
 public class CompanyController : Controller
 {
-    private readonly CompanyService _companyService;
-    private Firebase firebase;
+    private readonly ICompanyService _companyService;
+    private IFirebaseAutharization _firebaseAutharization;
 
     public CompanyController(CompanyService companyService)
     {
         _companyService = companyService;
-        firebase = Firebase.GetInstance();
+        _firebaseAutharization = FirebaseAutharization.GetInstance();
     }
 
     [HttpPost]
@@ -37,7 +34,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var company = await _companyService.GetByEmail(email);
 
@@ -60,7 +57,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var company = await _companyService.GetById(_id);
 
@@ -84,16 +81,15 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 // Converts the Logo into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryCompany(updatedUser);
-                await _companyService.UpdateCompany(userDto);
-                // Console.WriteLine("as MatchedCount: " + result.MatchedCount);
-                // if (result.MatchedCount == 0)
-                // {
-                //     return NotFound();
-                // }
+                var result = await _companyService.UpdateCompany(userDto);
+                if (result.MatchedCount == 0)
+                {
+                    return NotFound();
+                }
 
                 return Ok();
             }
@@ -109,7 +105,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)

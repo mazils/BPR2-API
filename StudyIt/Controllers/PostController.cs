@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt.helperClasses;
 using StudyIt.MongoDB.Models;
@@ -10,14 +9,14 @@ namespace StudyIt.Controllers;
 [Route("[Controller]")]
 public class PostController : Controller
 {
-    private readonly PostService _postService;
-    private Firebase firebase;
+    private readonly IPostService _postService;
+    private IFirebaseAutharization _firebaseAutharization;
 
 
     public PostController(PostService postService)
     {
         _postService = postService;
-        firebase = Firebase.GetInstance();
+        _firebaseAutharization = FirebaseAutharization.GetInstance();
     }
 
     [HttpPost]
@@ -27,7 +26,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 await _postService.CreatePost(post);
                 return Created("Post/create", post.title);
@@ -36,7 +35,7 @@ public class PostController : Controller
 
         return Unauthorized();
     }
-    
+
     [HttpGet]
     [Route("GetById")]
     public async Task<ActionResult<Post>> GetById(string _id)
@@ -44,26 +43,29 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 return await _postService.GetPostById(_id);
             }
         }
+
         return Unauthorized();
     }
+
     //get post by post id
     [HttpGet]
     [Route("GetByCompanyId")]
     public async Task<ActionResult<Post>> GetByCompanyId(string _id)
     {
-         if (Request.Headers.TryGetValue("token", out var value))
+        if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 return await _postService.GetPostByCompanyId(_id);
             }
         }
+
         return Unauthorized();
     }
 
@@ -75,7 +77,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var allPosts = await _postService.GetAllCompanyPosts(_id);
 
@@ -83,21 +85,23 @@ public class PostController : Controller
                 {
                     return NotFound();
                 }
+
                 return Ok(allPosts);
             }
         }
 
         return Unauthorized();
     }
+
     //apply with post id and project group
     [HttpPut]
     [Route("Apply")]
-    public async Task<IActionResult> ApplyToPost(string postId,Application applicationFromUser)
+    public async Task<IActionResult> ApplyToPost(string postId, Application applicationFromUser)
     {
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var post = await _postService.GetPostById(postId);
                 if (post.application != null)
@@ -110,14 +114,17 @@ public class PostController : Controller
                         }
                     }
                 }
-                var result = await _postService.ApplyToPost(postId,applicationFromUser);
+
+                var result = await _postService.ApplyToPost(postId, applicationFromUser);
                 if (result.MatchedCount == 0)
                 {
                     return NotFound();
                 }
+
                 return Ok();
             }
         }
+
         return Unauthorized();
     }
 
@@ -128,7 +135,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_firebaseAutharization.Verify(token).Result)
             {
                 var userDto = DataTransferObject.ConvertStringToDateTimePost(updatedPost);
                 var result = await _postService.UpdatePost(userDto);

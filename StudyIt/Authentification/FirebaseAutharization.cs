@@ -1,16 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
-using FirebaseAdmin;
+﻿using FirebaseAdmin;
 using FirebaseAdmin.Auth;
 using Google.Apis.Auth.OAuth2;
 
 namespace StudyIt;
 
-public class Firebase
+public class FirebaseAutharization : IFirebaseAutharization
 {
-    private static Firebase firebaseInstance;
-    private  GoogleCredential Credential;
-    private Firebase()
+    private static FirebaseAutharization firebaseInstance;
+    private GoogleCredential Credential;
+
+    private FirebaseAutharization()
     {
         FirebaseApp.Create(new AppOptions()
         {
@@ -18,14 +17,16 @@ public class Firebase
         });
     }
 
-    public static Firebase GetInstance()
+    public static FirebaseAutharization GetInstance()
     {
         if (firebaseInstance == null)
         {
-            firebaseInstance = new Firebase();
+            firebaseInstance = new FirebaseAutharization();
         }
+
         return firebaseInstance;
     }
+
     public async Task<bool> Verify(string token)
     {
         try
@@ -33,17 +34,15 @@ public class Firebase
             await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(token);
             return true;
         }
-        catch (FirebaseAuthException  e)
+        catch (FirebaseAuthException e)
         {
             Console.WriteLine(e.ErrorCode);
             return false;
-            
-        } 
-        catch(Exception e)
+        }
+        catch (Exception e)
         {
-             Console.WriteLine(e.ToString());
-             return false;
+            Console.WriteLine(e.ToString());
+            return false;
         }
     }
 }
-            

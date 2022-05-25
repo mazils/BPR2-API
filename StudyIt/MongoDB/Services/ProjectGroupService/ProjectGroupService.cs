@@ -9,7 +9,7 @@ using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
 
-public class ProjectGroupService
+public class ProjectGroupService: IProjectGroupService
 {
     private readonly IMongoCollection<User> _userCollection;
     private readonly IMongoCollection<ProjectGroup> _ProjectGroupCollection;
@@ -24,8 +24,7 @@ public class ProjectGroupService
         _ProjectGroupCollection =
             mongoDatabase.GetCollection<ProjectGroup>(studyItDatabaseSettings.Value.ProjectGroupCollection);
     }
-
-    // Creating project group
+    
     public async Task<String> CreateGroup(ProjectGroup projectGroup)
     {
         try
@@ -38,8 +37,7 @@ public class ProjectGroupService
             return Regex.Replace(e.Message.Split("dup key: ")[1], "[{\"}]", string.Empty).TrimEnd('.').Trim();
         }
     }
-
-    // Getting project group
+    
     public async Task<ProjectGroup> GetGroup(string email) =>
         await _ProjectGroupCollection.AsQueryable<ProjectGroup>()
             .Where(e => e.userEmails.Contains(email)).FirstOrDefaultAsync();

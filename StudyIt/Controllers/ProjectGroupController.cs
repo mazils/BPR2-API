@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
@@ -11,16 +8,15 @@ namespace StudyIt.Controllers;
 [Route("[Controller]")]
 public class ProjectGroupController : Controller
 {
-    private readonly ProjectGroupService _projectGroupService;
-    private readonly UserService _userService;
-    private Firebase firebase;
-
+    private readonly IProjectGroupService _projectGroupService;
+    private readonly IUserService _userService;
+    private IFirebaseAutharization _FirebaseAutharization;
 
     public ProjectGroupController(UserService userService, ProjectGroupService projectGroupService)
     {
         _projectGroupService = projectGroupService;
         _userService = userService;
-        firebase = Firebase.GetInstance();
+        _FirebaseAutharization = FirebaseAutharization.GetInstance();
     }
 
     [HttpPost]
@@ -30,7 +26,7 @@ public class ProjectGroupController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_FirebaseAutharization.Verify(token).Result)
             {
                 projectGroup.competences = new List<string>();
                 projectGroup.applicationIds = new List<string>();
@@ -70,7 +66,7 @@ public class ProjectGroupController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.Verify(token).Result)
+            if (_FirebaseAutharization.Verify(token).Result)
             {
                 var group = await _projectGroupService.GetGroup(email);
                 return group;

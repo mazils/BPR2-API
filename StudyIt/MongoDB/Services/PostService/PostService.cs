@@ -8,7 +8,7 @@ using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
 
-public class PostService
+public class PostService : IPostService
 {
     private readonly IMongoCollection<Post> _postCollection;
     private readonly IMongoCollection<BsonDocument> _postCollectionCreate;
@@ -22,8 +22,7 @@ public class PostService
         _postCollection = mongoDatabase.GetCollection<Post>(studyItDatabaseSettings.Value.PostCollection);
         _postCollectionCreate = mongoDatabase.GetCollection<BsonDocument>(studyItDatabaseSettings.Value.PostCollection);
     }
-
-    // Creating a post
+    
     public async Task CreatePost(Post post)
     {
         var newPost = new BsonDocument
@@ -52,9 +51,7 @@ public class PostService
         };
         await _postCollectionCreate.InsertOneAsync(newPost);
     }
-   
 
-    // Getting all company posts
     public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
     {
         var dataFacet = AggregateFacet.Create("dataFacet",
@@ -81,8 +78,7 @@ public class PostService
 
         return allCompanyPosts;
     }
-
-    // getting one post
+    
     public async Task<Post?> GetPostByCompanyId(string _id) =>
            await _postCollection.AsQueryable<Post>()
                .Where(e => e.companyId == _id).FirstOrDefaultAsync();
