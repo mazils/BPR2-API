@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,12 +25,12 @@ public class ProjectGroupController : Controller
 
     [HttpPost]
     [Route("create")]
-    public async Task<IActionResult> createGroup(ProjectGroup projectGroup)
+    public async Task<IActionResult> CreateGroup(ProjectGroup projectGroup)
     {
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 projectGroup.competences = new List<string>();
                 projectGroup.applicationIds = new List<string>();
@@ -43,32 +42,35 @@ public class ProjectGroupController : Controller
                     {
                         return NotFound("user not found: " + email);
                     }
+
                     if (user.competences != null)
                     {
                         allCompetences.AddRange(user.competences);
                     }
                 }
+
                 projectGroup.competences = allCompetences.Distinct().ToList();
                 string error = await _projectGroupService.CreateGroup(projectGroup);
                 if (error == string.Empty)
                 {
                     return Ok();
                 }
+
                 return Conflict(error);
             }
         }
+
         return Unauthorized();
-
-
     }
+
     [HttpGet]
-    [Route("get")]
+    [Route("getProjectGroup")]
     public async Task<ActionResult<ProjectGroup>> GetGroup(string email)
     {
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (firebase.varify(token).Result)
+            if (firebase.Verify(token).Result)
             {
                 var group = await _projectGroupService.GetGroup(email);
                 return group;
@@ -77,5 +79,4 @@ public class ProjectGroupController : Controller
 
         return Unauthorized();
     }
-
 }

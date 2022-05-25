@@ -1,5 +1,5 @@
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -57,13 +57,13 @@ public class PostService
            await _postCollection.AsQueryable<Post>()
                .Where(e => e._id == _id).FirstOrDefaultAsync();
 
-    // getting all posts
+    // Getting all company posts
     public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
     {
         var dataFacet = AggregateFacet.Create("dataFacet",
             PipelineDefinition<Post, Post>.Create(new[]
             {
-             PipelineStageDefinitionBuilder.Sort(Builders<Post>.Sort.Ascending(x => x.deadline))
+                PipelineStageDefinitionBuilder.Sort(Builders<Post>.Sort.Ascending(x => x.deadline))
             }));
 
         var filter = Builders<Post>.Filter.Eq(x => x.companyId, _id);
@@ -85,6 +85,17 @@ public class PostService
         return allCompanyPosts;
     }
 
+    // getting one post
+    public async Task<Post?> GetPostByCompanyId(string _id) =>
+           await _postCollection.AsQueryable<Post>()
+               .Where(e => e.companyId == _id).FirstOrDefaultAsync();
+    
+    public async Task<Post?> GetPostById(string _id) =>
+        await _postCollection.AsQueryable<Post>()
+            .Where(e => e._id == _id).FirstOrDefaultAsync();
+
+    public async Task<ReplaceOneResult> UpdatePost(Post updatedPost) =>
+        await _postCollection.ReplaceOneAsync(r => r._id == updatedPost._id, updatedPost);
 
     public async Task<UpdateResult> ApplyToPost(string postId,Application applicationFromUser)
     {

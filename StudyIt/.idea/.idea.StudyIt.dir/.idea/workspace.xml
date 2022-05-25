@@ -9,21 +9,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="779aab6d-d1e4-4bb7-8bda-947990b3908f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoDB/Services/GuestService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/GuestService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/StudyIt.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/StudyIt.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/StudyIt.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/StudyIt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/StudyIt.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/CompanyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CompanyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/PostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ProjectGroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProjectGroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/AllCompanyPosts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/AllCompanyPosts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Application.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Application.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/DTO/PostDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/DTO/PostDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/DTO/UserDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/DTO/UserDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/Post.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/ProjectGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/SearchResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/CompanyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/PostService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/ProjectGroupService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/ProjectGroupService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/SearchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/SearchService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDB/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helperClasses/FileConversion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/helperClasses/FileConversion.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c4bf5b7e1f6dad83b16c10e468186df52ccb21277b3e31a56c4178a97/MongoClient.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,6 +116,7 @@
       <workItem from="1652447261540" duration="4182000" />
       <workItem from="1652699734244" duration="3281000" />
       <workItem from="1652733074171" duration="595000" />
+      <workItem from="1653296520366" duration="7260000" />
     </task>
     <servers />
   </component>
@@ -133,14 +147,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/MongoDB/Services/GuestService.cs</url>
           <line>53</line>
-          <properties documentPath="D:\School\7th semester\StudyIt\BPR2-Backend\StudyIt\MongoDB\Services\GuestService.cs" initialLine="53" containingFunctionPresentation="method 'GetSearchedPost'">
-            <startOffsets>
-              <option value="1970" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1993" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\School\7th semester\StudyIt\BPR2-Backend\StudyIt\MongoDB\Services\GuestService.cs" initialLine="53" containingFunctionPresentation="method 'GetSearchedPost'" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

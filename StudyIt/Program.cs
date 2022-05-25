@@ -2,15 +2,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StudyIt;
-using StudyIt.MongoDB;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// CORS Test
+// CORS Accepting every request.
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(option =>

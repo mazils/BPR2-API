@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
@@ -22,7 +23,6 @@ public class SearchController : Controller
         if(search == null) {
             return NotFound();
         }
-        Console.WriteLine("Controller: " + search);
         return Ok(search);
     }
 }

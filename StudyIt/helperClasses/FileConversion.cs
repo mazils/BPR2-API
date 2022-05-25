@@ -1,5 +1,4 @@
 using System;
-using System.Text;
 
 public static class FileConversion
 {
@@ -26,5 +25,10 @@ public static class FileConversion
     public static byte[] Base64StringtoBin(string base64)
     {
         return Convert.FromBase64String(base64);
+    }
+
+    public static DateTime DateStringToDate(string date)
+    {
+        return DateTime.Parse(date);
     }
 }

@@ -14,7 +14,6 @@ public class Firebase
     {
         FirebaseApp.Create(new AppOptions()
         {
-            //TODO: try to change to GoogleCredential.default
             Credential = GoogleCredential.FromFile("studyit-df727-f40ab4417afd.json"),
         });
     }
@@ -27,7 +26,7 @@ public class Firebase
         }
         return firebaseInstance;
     }
-    public async Task<bool> varify(string token)
+    public async Task<bool> Verify(string token)
     {
         try
         {
