@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -102,4 +103,36 @@ public class PostService : IPostService
         var update = updateBuilder.Push(doc => doc.application,application );
         return await _postCollection.UpdateOneAsync(filter, update);
     }
+    
+    public async Task<AllCompanyPosts> GetThreeNearestDeadlineByType(string type)
+    {
+        var dataFacet = AggregateFacet.Create("dataFacet",
+            PipelineDefinition<Post, Post>.Create(new[]
+            {
+                PipelineStageDefinitionBuilder.Sort(Builders<Post>.Sort.Ascending(x => x.deadline)),
+                PipelineStageDefinitionBuilder.Limit<Post>(3)
+            }));
+
+        var filterDate = Builders<Post>.Filter.Gte(x => x.deadline, DateTime.UtcNow);
+        var filterType = Builders<Post>.Filter.Eq(x => x.type, type);
+
+        var filterCombination = Builders<Post>.Filter.And(filterDate, filterType);
+
+        var aggregation = await _postCollection.Aggregate()
+            .Match(filterCombination)
+            .Facet(dataFacet)
+            .ToListAsync();
+
+        var data = aggregation.First()
+            .Facets.First(x => x.Name == "dataFacet")
+            .Output<Post>();
+
+        var allCompanyPosts = new AllCompanyPosts()
+        {
+            data = data
+        };
+
+        return allCompanyPosts;
+    }
+
 }

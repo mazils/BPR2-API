@@ -13,7 +13,7 @@ public class SearchController : Controller
 
     [HttpGet]
     [Route("search")]
-    public async Task<IActionResult> GuestSearch(string searchTerm, string? location, string? type, int page)
+    public async Task<IActionResult> Search(string searchTerm, string? location, string? type, int page)
     {
         var search = await _guestService.GetSearchResult(searchTerm, location, type, page);
 

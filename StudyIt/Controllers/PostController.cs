@@ -151,4 +151,18 @@ public class PostController : Controller
 
         return Unauthorized();
     }
+
+    [HttpGet]
+    [Route("getThreeNearestDeadlineByType")]
+    public async Task<IActionResult> GetThreeNearestDeadlineByType(string type)
+    {
+        var getPosts = await _postService.GetThreeNearestDeadlineByType(type);
+
+        if (getPosts == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(getPosts);
+    }
 }

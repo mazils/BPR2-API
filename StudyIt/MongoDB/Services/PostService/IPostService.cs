@@ -15,6 +15,7 @@ public interface IPostService
     public Task<Post?> GetPostById(string _id);
     public Task<ReplaceOneResult> UpdatePost(Post updatedPost);
     public Task<UpdateResult> ApplyToPost(string postId, Application applicationFromUser);
+    public Task<AllCompanyPosts> GetThreeNearestDeadlineByType(string type);
 
 
 }

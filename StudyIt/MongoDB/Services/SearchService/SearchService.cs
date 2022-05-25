@@ -48,25 +48,25 @@ public class SearchService: ISearchService
         var filterLocation = Builders<Post>.Filter.Eq(x => x.location, location);
         var filterType = Builders<Post>.Filter.Eq(x => x.type, type);
 
-        var filterComb = Builders<Post>.Filter.And(filterDate, filterSearch);
+        var filterCombination = Builders<Post>.Filter.And(filterDate, filterSearch);
 
         if (location != null)
         {
-            filterComb = Builders<Post>.Filter.And(filterComb, filterLocation);
+            filterCombination = Builders<Post>.Filter.And(filterCombination, filterLocation);
         }
 
         if (type != null)
         {
-            filterComb = Builders<Post>.Filter.And(filterComb, filterType);
+            filterCombination = Builders<Post>.Filter.And(filterCombination, filterType);
         }
 
         if (location != null && type != null)
         {
-            filterComb = Builders<Post>.Filter.And(filterComb, filterLocation, filterType);
+            filterCombination = Builders<Post>.Filter.And(filterCombination, filterLocation, filterType);
         }
 
         var aggregation = await _posts.Aggregate()
-            .Match(filterComb)
+            .Match(filterCombination)
             .Facet(countFacet, dataFacet)
             .ToListAsync();
 
