@@ -115,7 +115,7 @@ public class PostController : Controller
                 {
                     return NotFound();
                 }
-                return Ok("Successfully applied");
+                return Ok();
             }
         }
         return Unauthorized();
