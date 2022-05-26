@@ -12,7 +12,7 @@ public class ProjectGroupController : Controller
     private readonly IUserService _userService;
     private IFirebaseAutharization _FirebaseAutharization;
 
-    public ProjectGroupController(UserService userService, ProjectGroupService projectGroupService)
+    public ProjectGroupController(IUserService userService, IProjectGroupService projectGroupService)
     {
         _projectGroupService = projectGroupService;
         _userService = userService;

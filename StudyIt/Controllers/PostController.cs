@@ -13,7 +13,7 @@ public class PostController : Controller
     private IFirebaseAutharization _firebaseAutharization;
 
 
-    public PostController(PostService postService)
+    public PostController(IPostService postService)
     {
         _postService = postService;
         _firebaseAutharization = FirebaseAutharization.GetInstance();

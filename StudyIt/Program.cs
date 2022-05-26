@@ -24,12 +24,12 @@ builder.Services.AddCors(option =>
 // Add services to the container.
 builder.Services.Configure<StudyItDatabaseSettings>(
     builder.Configuration.GetSection("StudyItDatabase"));
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IProjectGroupService, ProjectGroupService>();
+builder.Services.AddScoped<ISearchService, SearchService>();
 
-builder.Services.AddSingleton<UserService>();
-builder.Services.AddSingleton<CompanyService>();
-builder.Services.AddSingleton<PostService>();
-builder.Services.AddSingleton<ProjectGroupService>();
-builder.Services.AddSingleton<SearchService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(

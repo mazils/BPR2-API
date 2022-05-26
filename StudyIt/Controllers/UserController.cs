@@ -13,7 +13,7 @@ public class UserController : Controller
     private readonly IUserService _userService;
     private IFirebaseAutharization _firebaseAutharization;
 
-    public UserController(UserService userService)
+    public UserController(IUserService userService)
     {
         _userService = userService;
         _firebaseAutharization = FirebaseAutharization.GetInstance();

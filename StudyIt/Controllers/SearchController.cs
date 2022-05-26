@@ -9,7 +9,7 @@ public class SearchController : Controller
 {
     private readonly ISearchService _guestService;
 
-    public SearchController(SearchService guestService) => _guestService = guestService;
+    public SearchController(ISearchService guestService) => _guestService = guestService;
 
     [HttpGet]
     [Route("search")]

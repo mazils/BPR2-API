@@ -13,7 +13,7 @@ public class CompanyController : Controller
     private readonly ICompanyService _companyService;
     private IFirebaseAutharization _firebaseAutharization;
 
-    public CompanyController(CompanyService companyService)
+    public CompanyController(ICompanyService companyService)
     {
         _companyService = companyService;
         _firebaseAutharization = FirebaseAutharization.GetInstance();
