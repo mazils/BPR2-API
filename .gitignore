@@ -58,3 +58,14 @@ StudyIt/bin/Debug/net6.0/MongoDB.Bson.dll
 
 .StudyIt/bin
 .StudyIt/Debug
+StudyIt.Tests/obj/StudyIt.Tests.csproj.nuget.dgspec.json
+StudyIt.Tests/obj/StudyIt.Tests.csproj.nuget.dgspec.json
+StudyIt.Tests/obj/project.nuget.cache
+StudyIt.Tests/obj/Debug/net6.0/StudyIt.Tests.pdb
+StudyIt.Tests/obj/Debug/net6.0/StudyIt.Tests.genruntimeconfig.cache
+StudyIt.Tests/obj/Debug/net6.0/StudyIt.Tests.dll
+StudyIt.Tests/obj/Debug/net6.0/StudyIt.Tests.csproj.AssemblyReference.cache
+StudyIt.Tests/bin/Debug/net6.0/StudyIt.Tests.pdb
+StudyIt.Tests/bin/Debug/net6.0/StudyIt.pdb
+StudyIt.Tests/bin/Debug/net6.0/StudyIt.dll
+StudyIt.Tests/bin/Debug/net6.0/nunit_random_seed.tmp
