@@ -23,8 +23,8 @@ public class CompanyController : Controller
     [Route("register")]
     public async Task<IActionResult> Register(Company newCompany)
     {
-        await _companyService.Register(newCompany);
-        return Ok();
+        bool isRegistred = await _companyService.Register(newCompany);
+        return isRegistred ? Ok() : Conflict();
     }
 
     [HttpGet]

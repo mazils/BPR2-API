@@ -1,0 +1,5 @@
+StudyIt.Tests.Tests.Base64EqualFails
+StudyIt.Tests.Tests.base64EqualPass
+StudyIt.Tests.Tests.Base64ToBinAndBackPass
+StudyIt.Tests.Tests.DateStringToDatePassDash
+StudyIt.Tests.Tests.DateStringToDatePassSlash

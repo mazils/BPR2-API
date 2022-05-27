@@ -27,7 +27,7 @@ public class CompanyService :ICompanyService
         _defaultCompanyLogo = studyItDatabaseSettings.Value.DefaultCompanyLogo;
     }
     
-    public async Task Register(Company company)
+    public async Task<bool> Register(Company company)
     {
         var newCompany = new BsonDocument
         {
@@ -53,7 +53,16 @@ public class CompanyService :ICompanyService
                 "logo", new BsonBinaryData(FileConversion.Base64StringtoBin(_defaultCompanyLogo))
             }
         };
-        await _companyCollectionRegister.InsertOneAsync(newCompany);
+        try
+        {
+            await _companyCollectionRegister.InsertOneAsync(newCompany);
+            return true;
+        }
+        catch (MongoWriteException e)
+        {
+           return false;
+        }
+        
     }
     
     public async Task<Company?> GetByEmail(string email) =>

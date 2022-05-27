@@ -21,9 +21,9 @@ builder.Services.AddCors(option =>
     });
 });
 
-// Add services to the container.
+// Add services to the container for DI.
 builder.Services.Configure<StudyItDatabaseSettings>(
-    builder.Configuration.GetSection("StudyItDatabase"));
+builder.Configuration.GetSection("StudyItDatabase"));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IPostService, PostService>();

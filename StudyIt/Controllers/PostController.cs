@@ -28,8 +28,8 @@ public class PostController : Controller
             string token = value;
             if (_firebaseAutharization.Verify(token).Result)
             {
-                await _postService.CreatePost(post);
-                return Created("Post/create", post.title);
+                bool isCreated = await _postService.CreatePost(post);
+                return isCreated?Created("Post/create", post.title):Conflict();
             }
         }
 
@@ -139,7 +139,6 @@ public class PostController : Controller
             {
                 var userDto = DataTransferObject.ConvertStringToDateTimePost(updatedPost);
                 var result = await _postService.UpdatePost(userDto);
-                // Console.WriteLine("as MatchedCount: " + result.MatchedCount);
                 if (result.MatchedCount == 0)
                 {
                     return NotFound();

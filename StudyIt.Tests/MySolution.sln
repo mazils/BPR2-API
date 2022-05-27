@@ -1,0 +1,32 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# 
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyIt.Tests", "StudyIt.Tests.csproj", "{D60BB948-8844-4E70-96E0-51B83E015D8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BPR2 API", "..\..\BPR2 API", "{F81A7047-A8A6-4A88-A73F-781936E20A0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyIt", "..\StudyIt\StudyIt.csproj", "{4F89934A-E69D-4FFF-8FE9-AE9CEE7EC7E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D60BB948-8844-4E70-96E0-51B83E015D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D60BB948-8844-4E70-96E0-51B83E015D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D60BB948-8844-4E70-96E0-51B83E015D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D60BB948-8844-4E70-96E0-51B83E015D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F89934A-E69D-4FFF-8FE9-AE9CEE7EC7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F89934A-E69D-4FFF-8FE9-AE9CEE7EC7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F89934A-E69D-4FFF-8FE9-AE9CEE7EC7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F89934A-E69D-4FFF-8FE9-AE9CEE7EC7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3176DE9-0790-4CCF-9380-A77C6999F8B4}
+	EndGlobalSection
+EndGlobal

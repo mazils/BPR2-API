@@ -23,8 +23,8 @@ public class UserController : Controller
     [Route("register")]
     public async Task<IActionResult> Register(User newUser)
     {
-        await _userService.Register(newUser);
-        return Ok();
+        bool isCreated = await _userService.Register(newUser);
+        return isCreated?Ok():Conflict();
     }
 
     [HttpGet]

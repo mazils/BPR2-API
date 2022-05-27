@@ -24,7 +24,7 @@ public class PostService : IPostService
         _postCollectionCreate = mongoDatabase.GetCollection<BsonDocument>(studyItDatabaseSettings.Value.PostCollection);
     }
     
-    public async Task CreatePost(Post post)
+    public async Task<bool> CreatePost(Post post)
     {
         var newPost = new BsonDocument
         {
@@ -50,7 +50,16 @@ public class PostService : IPostService
                 "companyId", post.companyId
             }
         };
-        await _postCollectionCreate.InsertOneAsync(newPost);
+        try
+        {
+            await _postCollectionCreate.InsertOneAsync(newPost);
+            return true;
+        }
+        catch (MongoWriteException e)
+        {
+            return false;
+        }
+       
     }
 
     public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)

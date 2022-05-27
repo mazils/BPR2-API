@@ -8,7 +8,7 @@ using StudyIt.MongoDB.Models;
 public interface ICompanyService
 {
     // Creating a Company
-    public  Task Register(Company company);
+    public  Task<bool> Register(Company company);
     // Finding a Company by email
     public  Task<Company?> GetByEmail(string email);
     // Finding a Company by id

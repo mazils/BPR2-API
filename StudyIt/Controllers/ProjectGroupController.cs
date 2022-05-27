@@ -51,7 +51,6 @@ public class ProjectGroupController : Controller
                 {
                     return Ok();
                 }
-
                 return Conflict(error);
             }
         }

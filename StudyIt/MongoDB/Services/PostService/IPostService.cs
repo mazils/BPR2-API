@@ -6,7 +6,7 @@ namespace StudyIt.MongoDB.Services;
 public interface IPostService
 {
     // Creating a post
-    public Task CreatePost(Post post);
+    public Task<bool> CreatePost(Post post);
     // Getting all company posts
     public Task<AllCompanyPosts> GetAllCompanyPosts(string _id);
     // getting one post by Company id

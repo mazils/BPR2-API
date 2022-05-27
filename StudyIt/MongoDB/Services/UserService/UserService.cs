@@ -29,7 +29,7 @@ public class UserService: IUserService
         _defaultPersonalityProfile = studyItDatabaseSettings.Value.DefaultPersonalityProfile;
     }
 
-    public async Task Register(User user)
+    public async Task<bool> Register(User user)
     {
         var newLogin = new BsonDocument
         {
@@ -64,7 +64,16 @@ public class UserService: IUserService
                 }
             }
         };
-        await _userCollectionRegister.InsertOneAsync(newLogin);
+        try
+        {
+            await _userCollectionRegister.InsertOneAsync(newLogin);
+            return true;
+        }
+        catch (MongoWriteException e)
+        {
+            return false;
+        }
+        
     }
     
     public async Task<User?> GetByEmail(string email) =>

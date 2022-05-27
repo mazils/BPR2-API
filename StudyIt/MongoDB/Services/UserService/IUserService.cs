@@ -6,7 +6,7 @@ namespace StudyIt.MongoDB.Services;
 public interface IUserService
 {
     // Creating a User
-    public Task Register(User user);
+    public Task<bool> Register(User user);
     // Finding a User by email
     public Task<User?> GetByEmail(string email);
     // Finding a User by id
