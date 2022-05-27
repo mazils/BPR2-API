@@ -210,20 +210,4 @@ public class UserController : Controller
         return Unauthorized();
     }
 
-    //just a template
-    [HttpGet]
-    [Route("tokenTest")]
-    public async Task<IActionResult> testToken()
-    {
-        if (Request.Headers.TryGetValue("token", out var value))
-        {
-            string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
-            {
-                return Ok();
-            }
-        }
-
-        return Unauthorized();
-    }
 }
