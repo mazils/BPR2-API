@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -7,7 +6,7 @@ using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
 
-public class CompanyService :ICompanyService
+public class CompanyService : ICompanyService
 {
     private readonly IMongoCollection<Company> _companyCollection;
     private readonly IMongoCollection<BsonDocument> _companyCollectionRegister;
@@ -26,7 +25,7 @@ public class CompanyService :ICompanyService
 
         _defaultCompanyLogo = studyItDatabaseSettings.Value.DefaultCompanyLogo;
     }
-    
+
     public async Task<bool> Register(Company company)
     {
         var newCompany = new BsonDocument
@@ -60,11 +59,10 @@ public class CompanyService :ICompanyService
         }
         catch (MongoWriteException e)
         {
-           return false;
+            return false;
         }
-        
     }
-    
+
     public async Task<Company?> GetByEmail(string email) =>
         await _companyCollection.AsQueryable<Company>()
             .Where(e => e.email == email).FirstOrDefaultAsync();
@@ -72,14 +70,14 @@ public class CompanyService :ICompanyService
     public async Task<Company?> GetById(string _id) =>
         await _companyCollection.AsQueryable<Company>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
-    
+
     public async Task<ReplaceOneResult> UpdateCompany(Company updatedCompany) =>
         await _companyCollection.ReplaceOneAsync(c => c._id == updatedCompany._id, updatedCompany);
 
     public async Task UpdateLogo(string _id, byte[] fileBytes) =>
         await _companyCollection.UpdateOneAsync(x => x._id == _id,
             Builders<Company>.Update.Set(x => x.logo, fileBytes));
-    
+
     public async Task<byte[]> GetLogo(string _id)
     {
         Company company =

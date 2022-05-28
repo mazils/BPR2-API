@@ -104,6 +104,10 @@ public class PostController : Controller
             if (_firebaseAutharization.Verify(token).Result)
             {
                 var post = await _postService.GetPostById(postId);
+                if (post == null)
+                {
+                    return NotFound();
+                }
                 if (post.application != null)
                 {
                     foreach (var application in post.application)

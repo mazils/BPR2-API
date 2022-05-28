@@ -11,7 +11,7 @@ public class Company
 
     public string email { get; set; } = null!;
     public string name { get; set; } = null!;
-    public int cvr { get; set; } 
+    public int cvr { get; set; }
     public string? location { get; set; }
     public string? phoneNumber { get; set; }
     public string? description { get; set; }

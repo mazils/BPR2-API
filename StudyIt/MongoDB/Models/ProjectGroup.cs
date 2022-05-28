@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -11,6 +10,8 @@ public class ProjectGroup
     public string? _id { get; set; }
 
     public List<string>? userEmails { get; set; } = null!;
-    public List<string>? applicationIds { get; set; } = null!;
-    public List<string>? competences { get; set; } = null!;
+    public List<string>? applicationIds { get; set; } 
+    
+    public List<string>? competences { get; set; } 
+    
 }

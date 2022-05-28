@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -9,6 +8,7 @@ public class User
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? _id { get; set; }
+
     public string email { get; set; } = null!;
     public string name { get; set; } = null!;
     public string education { get; set; } = null!;

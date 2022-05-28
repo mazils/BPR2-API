@@ -1,11 +1,9 @@
-using System.Collections.Generic;
-
 namespace StudyIt.MongoDB.Models;
 
 public class SearchResult
 {
     public int Docs { get; set; }
-    
+
     public int TotalPages { get; set; }
 
     public int CurrentPage { get; set; }

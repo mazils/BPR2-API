@@ -1,6 +1,3 @@
-using System;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -9,7 +6,7 @@ using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
 
-public class ProjectGroupService: IProjectGroupService
+public class ProjectGroupService : IProjectGroupService
 {
     private readonly IMongoCollection<User> _userCollection;
     private readonly IMongoCollection<ProjectGroup> _ProjectGroupCollection;
@@ -24,20 +21,20 @@ public class ProjectGroupService: IProjectGroupService
         _ProjectGroupCollection =
             mongoDatabase.GetCollection<ProjectGroup>(studyItDatabaseSettings.Value.ProjectGroupCollection);
     }
-    
-    public async Task<String> CreateGroup(ProjectGroup projectGroup)
+
+    public async Task<bool> CreateGroup(ProjectGroup projectGroup)
     {
         try
         {
             await _ProjectGroupCollection.InsertOneAsync(projectGroup);
-            return string.Empty;
+            return true;
         }
         catch (MongoWriteException e)
         {
-            return Regex.Replace(e.Message.Split("dup key: ")[1], "[{\"}]", string.Empty).TrimEnd('.').Trim();
+            return false;
         }
     }
-    
+
     public async Task<ProjectGroup> GetGroup(string email) =>
         await _ProjectGroupCollection.AsQueryable<ProjectGroup>()
             .Where(e => e.userEmails.Contains(email)).FirstOrDefaultAsync();

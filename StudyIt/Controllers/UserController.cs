@@ -83,7 +83,6 @@ public class UserController : Controller
                 // Converts the Profile Picture and Personality Profile into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryUser(updatedUser);
                 var result = await _userService.UpdateUser(userDto);
-                Console.WriteLine("as MatchedCount: " + result.MatchedCount);
                 if (result.MatchedCount == 0)
                 {
                     return NotFound();

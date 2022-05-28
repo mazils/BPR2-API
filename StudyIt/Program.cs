@@ -1,7 +1,3 @@
-
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using StudyIt.MongoDB.Models;
 using StudyIt.MongoDB.Services;
 
@@ -14,16 +10,16 @@ builder.Services.AddCors(option =>
 {
     option.AddPolicy(MyAllowSpecificOrigins,
         builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
 });
 
 // Add services to the container for DI.
 builder.Services.Configure<StudyItDatabaseSettings>(
-builder.Configuration.GetSection("StudyItDatabase"));
+    builder.Configuration.GetSection("StudyItDatabase"));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IPostService, PostService>();

@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -23,7 +20,7 @@ public class PostService : IPostService
         _postCollection = mongoDatabase.GetCollection<Post>(studyItDatabaseSettings.Value.PostCollection);
         _postCollectionCreate = mongoDatabase.GetCollection<BsonDocument>(studyItDatabaseSettings.Value.PostCollection);
     }
-    
+
     public async Task<bool> CreatePost(Post post)
     {
         var newPost = new BsonDocument
@@ -59,7 +56,6 @@ public class PostService : IPostService
         {
             return false;
         }
-       
     }
 
     public async Task<AllCompanyPosts> GetAllCompanyPosts(string _id)
@@ -88,11 +84,11 @@ public class PostService : IPostService
 
         return allCompanyPosts;
     }
-    
+
     public async Task<Post?> GetPostByCompanyId(string _id) =>
-           await _postCollection.AsQueryable<Post>()
-               .Where(e => e.companyId == _id).FirstOrDefaultAsync();
-    
+        await _postCollection.AsQueryable<Post>()
+            .Where(e => e.companyId == _id).FirstOrDefaultAsync();
+
     public async Task<Post?> GetPostById(string _id) =>
         await _postCollection.AsQueryable<Post>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
@@ -100,7 +96,7 @@ public class PostService : IPostService
     public async Task<ReplaceOneResult> UpdatePost(Post updatedPost) =>
         await _postCollection.ReplaceOneAsync(r => r._id == updatedPost._id, updatedPost);
 
-    public async Task<UpdateResult> ApplyToPost(string postId,Application applicationFromUser)
+    public async Task<UpdateResult> ApplyToPost(string postId, Application applicationFromUser)
     {
         Application application = new Application();
         application.applicants = applicationFromUser.applicants;
@@ -109,10 +105,10 @@ public class PostService : IPostService
         var filterBuilder = Builders<Post>.Filter;
         var filter = filterBuilder.Eq(x => x._id, postId);
         var updateBuilder = Builders<Post>.Update;
-        var update = updateBuilder.Push(doc => doc.application,application );
+        var update = updateBuilder.Push(doc => doc.application, application);
         return await _postCollection.UpdateOneAsync(filter, update);
     }
-    
+
     public async Task<AllCompanyPosts> GetThreeNearestDeadlineByType(string type)
     {
         var dataFacet = AggregateFacet.Create("dataFacet",
@@ -143,5 +139,4 @@ public class PostService : IPostService
 
         return allCompanyPosts;
     }
-
 }

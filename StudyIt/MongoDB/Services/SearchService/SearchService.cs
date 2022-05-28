@@ -1,15 +1,11 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using StudyIt.MongoDB.Models;
 
 namespace StudyIt.MongoDB.Services;
 
-public class SearchService: ISearchService
+public class SearchService : ISearchService
 {
     private readonly IMongoCollection<Post> _posts;
 

@@ -33,6 +33,7 @@ public class ProjectGroupController : Controller
                 List<string> allCompetences = new List<string>();
                 foreach (var email in projectGroup.userEmails)
                 {
+                    var group = await _projectGroupService.GetGroup(email);
                     var user = await _userService.GetByEmail(email);
                     if (user == null)
                     {
@@ -43,15 +44,21 @@ public class ProjectGroupController : Controller
                     {
                         allCompetences.AddRange(user.competences);
                     }
+
+                    if (group != null || group.userEmails.Count() != 0)
+                    {
+                        return Conflict("Email already in the group: " + email);
+                    }
                 }
 
                 projectGroup.competences = allCompetences.Distinct().ToList();
-                string error = await _projectGroupService.CreateGroup(projectGroup);
-                if (error == string.Empty)
+                bool isCreated = await _projectGroupService.CreateGroup(projectGroup);
+                if (isCreated)
                 {
                     return Ok();
                 }
-                return Conflict(error);
+
+                return Problem();
             }
         }
 
