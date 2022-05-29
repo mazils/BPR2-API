@@ -15,7 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        run: echo $secrets.STUDYIT_FIREBASEKEY
           env: 
             GOOGLE_APPLICATION_CREDENTIALS: $secrets.STUDYIT_FIREBASEKEY
       - name: Set up .NET Core
