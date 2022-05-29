@@ -14,10 +14,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-        run: echo "$GOOGLE_APPLICATION_CREDENTIALS"
-        env: # Or as an environment variable
-          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
       - uses: actions/checkout@v2
+
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
