@@ -57,6 +57,6 @@ jobs:
           package: .
       
       - name: env
-        env: 
-          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
-        run: echo "${{secrets.STUDYIT_FIREBASEKEY}}"
+        # env: 
+        #   GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
+        # run: echo "${{secrets.STUDYIT_FIREBASEKEY}}"
