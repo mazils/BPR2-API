@@ -14,7 +14,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-     
       - uses: actions/checkout@v2
 
       - name: Set up .NET Core
@@ -56,8 +55,8 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7D5ED2DC53824284B5E1701F3D9E935B }}
           package: .
-     - name: env
+      
+      - name: env
         env: 
           GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
-        run: |
-          echo "${{secrets.STUDYIT_FIREBASEKEY}}"
+        run: cat "${{secrets.STUDYIT_FIREBASEKEY}}"
