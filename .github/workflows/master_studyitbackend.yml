@@ -24,6 +24,7 @@ jobs:
 
       - name: Build with dotnet
 #         run: dotnet build --configuration Release
+        env: GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
         run: dotnet build ./StudyIt/StudyIt.csproj  --configuration Release
       - name: dotnet publish
         run: dotnet publish ./StudyIt/StudyIt.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
