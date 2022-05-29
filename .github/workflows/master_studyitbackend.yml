@@ -14,9 +14,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: env
+        env: 
+          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
+        run: |
+          echo "${{secrets.STUDYIT_FIREBASEKEY}}"
       - uses: actions/checkout@v2
-          env: 
-            GOOGLE_APPLICATION_CREDENTIALS: $secrets.STUDYIT_FIREBASEKEY
+
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -25,7 +29,6 @@ jobs:
 
       - name: Build with dotnet
 #         run: dotnet build --configuration Release
-        
         run: dotnet build ./StudyIt/StudyIt.csproj  --configuration Release
       - name: dotnet publish
         run: dotnet publish ./StudyIt/StudyIt.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
