@@ -12,9 +12,10 @@ public class FirebaseAutharization : IFirebaseAutharization
     private FirebaseAutharization()
     {
         FirebaseApp.Create(new AppOptions()
-        {
-            // Credential = GoogleCredential.FromFile("studyit-df727-f40ab4417afd.json"),
-            Credential = GoogleCredential.GetApplicationDefault()
+        {   
+            
+            Credential = GoogleCredential.FromFile(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS")),
+            // Credential = GoogleCredential.GetApplicationDefault()
         });
     }
 
