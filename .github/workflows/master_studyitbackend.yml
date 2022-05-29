@@ -55,8 +55,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7D5ED2DC53824284B5E1701F3D9E935B }}
           package: .
-      
-      - name: env
-        # env: 
-        #   GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
-        # run: echo "${{secrets.STUDYIT_FIREBASEKEY}}"
+  
