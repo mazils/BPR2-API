@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         env: # Or as an environment variable
-          super_secret: ${{secrets.STUDYIT_FIREBASEKEY}}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.STUDYIT_FIREBASEKEY}}
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
