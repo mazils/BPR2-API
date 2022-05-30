@@ -48,7 +48,7 @@ public class DataTransferObject
         post.location = receivedPost.location;
         post.competences = receivedPost.competences;
         post.type = receivedPost.type;
-        post.deadline = FileConversion.DateStringToDate(receivedPost.deadline);
+        post.deadline = DateTime.Parse(receivedPost.deadline);
         post.companyId = receivedPost.companyId;
 
         return post;

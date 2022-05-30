@@ -26,9 +26,4 @@ public static class FileConversion
     {
         return Convert.FromBase64String(base64);
     }
-
-    public static DateTime DateStringToDate(string date)
-    {
-        return DateTime.Parse(date);
-    }
 }
