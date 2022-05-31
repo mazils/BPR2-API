@@ -45,6 +45,9 @@ public class PostService : IPostService
             },
             {
                 "companyId", post.companyId
+            },
+            {
+                "application", new BsonArray(new List<Application>())
             }
         };
         try
@@ -54,6 +57,7 @@ public class PostService : IPostService
         }
         catch (MongoWriteException e)
         {
+            System.Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -92,7 +96,7 @@ public class PostService : IPostService
     public async Task<Post?> GetPostById(string _id) =>
         await _postCollection.AsQueryable<Post>()
             .Where(e => e._id == _id).FirstOrDefaultAsync();
-
+        //after updating application becomes null
     public async Task<ReplaceOneResult> UpdatePost(Post updatedPost) =>
         await _postCollection.ReplaceOneAsync(r => r._id == updatedPost._id, updatedPost);
 

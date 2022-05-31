@@ -14,5 +14,5 @@ public class PostDTO
     public string deadline { get; set; }
     public string companyId { get; set; }
     
-    public Application[]? application { get; set; }
+    public List<Application>? application { get; set; }
 }

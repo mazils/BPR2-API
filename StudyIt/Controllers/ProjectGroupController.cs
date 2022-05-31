@@ -39,16 +39,16 @@ public class ProjectGroupController : Controller
                     {
                         return NotFound();
                     }
+                    if(group != null)
+                    {
+                        return Conflict();
+                    }
 
                     if (user.competences != null)
                     {
                         allCompetences.AddRange(user.competences);
                     }
 
-                    if (group != null || group.userEmails.Count() != 0)
-                    {
-                        return Conflict();
-                    }
                 }
 
                 projectGroup.competences = allCompetences.Distinct().ToList();
@@ -57,8 +57,11 @@ public class ProjectGroupController : Controller
                 {
                     return Ok();
                 }
+                else{
+                    return BadRequest();
+                }
 
-                return Problem();
+                
             }
         }
 

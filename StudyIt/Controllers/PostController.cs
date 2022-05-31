@@ -108,6 +108,7 @@ public class PostController : Controller
                 {
                     return NotFound();
                 }
+                
                 if (post.application != null)
                 {
                     foreach (var application in post.application)
@@ -118,7 +119,7 @@ public class PostController : Controller
                         }
                     }
                 }
-
+               
                 var result = await _postService.ApplyToPost(postId, applicationFromUser);
                 if (result.MatchedCount == 0)
                 {
@@ -141,8 +142,8 @@ public class PostController : Controller
             string token = value;
             if (_firebaseAutharization.Verify(token).Result)
             {
-                var userDto = DataTransferObject.ConvertStringToDateTimePost(updatedPost);
-                var result = await _postService.UpdatePost(userDto);
+                var postDto = DataTransferObject.ConvertStringToDateTimePost(updatedPost);
+                var result = await _postService.UpdatePost(postDto);
                 if (result.MatchedCount == 0)
                 {
                     return NotFound();

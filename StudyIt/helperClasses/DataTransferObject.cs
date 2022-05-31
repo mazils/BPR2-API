@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using StudyIt.MongoDB.Models;
-
 namespace StudyIt.helperClasses;
 
 public class DataTransferObject
@@ -41,7 +40,6 @@ public class DataTransferObject
     public static Post ConvertStringToDateTimePost(PostDTO receivedPost)
     {
         Post post = new Post();
-
         post._id = receivedPost._id;
         post.title = receivedPost.title;
         post.description = receivedPost.description;
@@ -50,7 +48,8 @@ public class DataTransferObject
         post.type = receivedPost.type;
         post.deadline = DateTime.Parse(receivedPost.deadline);
         post.companyId = receivedPost.companyId;
-
+        post.application = new List<Application>();
+        if(receivedPost.application != null) post.application = receivedPost.application;
         return post;
     }
 }
