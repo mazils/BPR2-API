@@ -114,7 +114,7 @@ public class PostController : Controller
                     {
                         if (application.applicants.Contains(applicationFromUser.applicants.ElementAt(0)))
                         {
-                            return Conflict("Already applied");
+                            return Conflict();
                         }
                     }
                 }

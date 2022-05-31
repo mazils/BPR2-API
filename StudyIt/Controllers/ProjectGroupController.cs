@@ -37,7 +37,7 @@ public class ProjectGroupController : Controller
                     var user = await _userService.GetByEmail(email);
                     if (user == null)
                     {
-                        return NotFound("User with Email: " + email + " Not found.");
+                        return NotFound();
                     }
 
                     if (user.competences != null)
@@ -47,7 +47,7 @@ public class ProjectGroupController : Controller
 
                     if (group != null || group.userEmails.Count() != 0)
                     {
-                        return Conflict("User with email: " + email + " is already in a different project group");
+                        return Conflict();
                     }
                 }
 
