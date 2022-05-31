@@ -11,12 +11,12 @@ namespace StudyIt.Controllers;
 public class CompanyController : Controller
 {
     private readonly ICompanyService _companyService;
-    private IFirebaseAutharization _firebaseAutharization;
+    private IFirebaseAuthentication _firebaseAuthentication;
 
     public CompanyController(ICompanyService companyService)
     {
         _companyService = companyService;
-        _firebaseAutharization = FirebaseAutharization.GetInstance();
+        _firebaseAuthentication = FirebaseAuthentication.GetInstance();
     }
 
     [HttpPost]
@@ -34,7 +34,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var company = await _companyService.GetByEmail(email);
 
@@ -57,7 +57,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var company = await _companyService.GetById(_id);
 
@@ -81,7 +81,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 // Converts the Logo into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryCompany(updatedUser);
@@ -105,7 +105,7 @@ public class CompanyController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)

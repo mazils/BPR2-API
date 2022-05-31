@@ -4,12 +4,12 @@ using Google.Apis.Auth.OAuth2;
 
 namespace StudyIt;
 
-public class FirebaseAutharization : IFirebaseAutharization
+public class FirebaseAuthentication : IFirebaseAuthentication
 {
-    private static FirebaseAutharization firebaseInstance;
+    private static FirebaseAuthentication firebaseInstance;
     private GoogleCredential Credential;
 
-    private FirebaseAutharization()
+    private FirebaseAuthentication()
     {
         FirebaseApp.Create(new AppOptions()
         {
@@ -17,11 +17,11 @@ public class FirebaseAutharization : IFirebaseAutharization
         });
     }
 
-    public static FirebaseAutharization GetInstance()
+    public static FirebaseAuthentication GetInstance()
     {
         if (firebaseInstance == null)
         {
-            firebaseInstance = new FirebaseAutharization();
+            firebaseInstance = new FirebaseAuthentication();
         }
 
         return firebaseInstance;

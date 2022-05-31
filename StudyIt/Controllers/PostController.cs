@@ -10,13 +10,13 @@ namespace StudyIt.Controllers;
 public class PostController : Controller
 {
     private readonly IPostService _postService;
-    private IFirebaseAutharization _firebaseAutharization;
+    private IFirebaseAuthentication _firebaseAuthentication;
 
 
     public PostController(IPostService postService)
     {
         _postService = postService;
-        _firebaseAutharization = FirebaseAutharization.GetInstance();
+        _firebaseAuthentication = FirebaseAuthentication.GetInstance();
     }
 
     [HttpPost]
@@ -26,7 +26,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 bool isCreated = await _postService.CreatePost(post);
                 return isCreated?Created("Post/create", post.title):Conflict();
@@ -43,7 +43,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 return await _postService.GetPostById(_id);
             }
@@ -60,7 +60,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 return await _postService.GetPostByCompanyId(_id);
             }
@@ -77,7 +77,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var allPosts = await _postService.GetAllCompanyPosts(_id);
 
@@ -101,7 +101,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var post = await _postService.GetPostById(postId);
                 if (post == null)
@@ -140,7 +140,7 @@ public class PostController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var postDto = DataTransferObject.ConvertStringToDateTimePost(updatedPost);
                 var result = await _postService.UpdatePost(postDto);

@@ -1,6 +1,6 @@
 ﻿namespace StudyIt;
 
-public interface IFirebaseAutharization
+public interface IFirebaseAuthentication
 {
     public Task<bool> Verify(string token);
 }

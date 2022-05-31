@@ -10,13 +10,13 @@ public class ProjectGroupController : Controller
 {
     private readonly IProjectGroupService _projectGroupService;
     private readonly IUserService _userService;
-    private IFirebaseAutharization _FirebaseAutharization;
+    private IFirebaseAuthentication _firebaseAuthentication;
 
     public ProjectGroupController(IUserService userService, IProjectGroupService projectGroupService)
     {
         _projectGroupService = projectGroupService;
         _userService = userService;
-        _FirebaseAutharization = FirebaseAutharization.GetInstance();
+        _firebaseAuthentication = FirebaseAuthentication.GetInstance();
     }
 
     [HttpPost]
@@ -26,7 +26,7 @@ public class ProjectGroupController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_FirebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 projectGroup.competences = new List<string>();
                 projectGroup.applicationIds = new List<string>();
@@ -39,7 +39,8 @@ public class ProjectGroupController : Controller
                     {
                         return NotFound();
                     }
-                    if(group != null)
+
+                    if (group != null)
                     {
                         return Conflict();
                     }
@@ -48,7 +49,6 @@ public class ProjectGroupController : Controller
                     {
                         allCompetences.AddRange(user.competences);
                     }
-
                 }
 
                 projectGroup.competences = allCompetences.Distinct().ToList();
@@ -57,11 +57,10 @@ public class ProjectGroupController : Controller
                 {
                     return Ok();
                 }
-                else{
+                else
+                {
                     return BadRequest();
                 }
-
-                
             }
         }
 
@@ -75,9 +74,14 @@ public class ProjectGroupController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_FirebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var group = await _projectGroupService.GetGroup(email);
+                if (group == null)
+                {
+                    return NoContent();
+                }
+
                 return group;
             }
         }

@@ -11,12 +11,12 @@ namespace StudyIt.Controllers;
 public class UserController : Controller
 {
     private readonly IUserService _userService;
-    private IFirebaseAutharization _firebaseAutharization;
+    private IFirebaseAuthentication _firebaseAuthentication;
 
     public UserController(IUserService userService)
     {
         _userService = userService;
-        _firebaseAutharization = FirebaseAutharization.GetInstance();
+        _firebaseAuthentication = FirebaseAuthentication.GetInstance();
     }
 
     [HttpPost]
@@ -34,7 +34,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var user = await _userService.GetByEmail(email);
                 if (user == null)
@@ -56,7 +56,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var user = await _userService.GetById(_id);
                 if (user == null)
@@ -78,7 +78,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 // Converts the Profile Picture and Personality Profile into a byte[]
                 var userDto = DataTransferObject.ConvertBase64ToBinaryUser(updatedUser);
@@ -102,7 +102,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -135,7 +135,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var formCollection = await Request.ReadFormAsync();
                 if (formCollection.Files.Count == 0)
@@ -168,7 +168,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var personalityProfile = await _userService.GetPersonalityProfile(_id);
                 if (personalityProfile == null)
@@ -190,7 +190,7 @@ public class UserController : Controller
         if (Request.Headers.TryGetValue("token", out var value))
         {
             string token = value;
-            if (_firebaseAutharization.Verify(token).Result)
+            if (_firebaseAuthentication.Verify(token).Result)
             {
                 var picture = await _userService.GetProfilePicture(_id);
                 if (picture == null)
