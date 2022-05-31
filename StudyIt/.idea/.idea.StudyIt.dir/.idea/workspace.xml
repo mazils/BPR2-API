@@ -10,12 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="779aab6d-d1e4-4bb7-8bda-947990b3908f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StudyIt.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentification/FirebaseAutharization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/FirebaseAuthentication.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentification/IFirebaseAutharization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/IFirebaseAuthentication.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CompanyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CompanyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/PostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/ProjectGroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProjectGroupController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

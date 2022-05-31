@@ -79,7 +79,7 @@ public class ProjectGroupController : Controller
                 var group = await _projectGroupService.GetGroup(email);
                 if (group == null)
                 {
-                    return NoContent();
+                    return NotFound();
                 }
 
                 return group;
