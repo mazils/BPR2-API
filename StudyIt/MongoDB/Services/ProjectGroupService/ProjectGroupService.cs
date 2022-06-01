@@ -8,7 +8,6 @@ namespace StudyIt.MongoDB.Services;
 
 public class ProjectGroupService : IProjectGroupService
 {
-    private readonly IMongoCollection<User> _userCollection;
     private readonly IMongoCollection<ProjectGroup> _ProjectGroupCollection;
 
     private readonly IMongoCollection<BsonDocument> _companyCollectionRegister;
@@ -17,7 +16,6 @@ public class ProjectGroupService : IProjectGroupService
     {
         var mongoClient = new MongoClient(studyItDatabaseSettings.Value.ConnectionString);
         var mongoDatabase = mongoClient.GetDatabase(studyItDatabaseSettings.Value.DatabaseName);
-        _userCollection = mongoDatabase.GetCollection<User>(studyItDatabaseSettings.Value.UserCollection);
         _ProjectGroupCollection =
             mongoDatabase.GetCollection<ProjectGroup>(studyItDatabaseSettings.Value.ProjectGroupCollection);
     }
